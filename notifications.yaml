@@ -1,0 +1,42 @@
+#https://home-assistant.io/components/notify/
+
+####################################################
+#                                                  #
+#                NOTIFICATIONS                     #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/notify.smtp/
+
+  - name: HA_Email
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret smtp_sender
+    starttls: true
+    username: !secret smtp_username
+    password: !secret smtp_password
+    recipient: !secret smtp_recipient
+
+  - name: HA_Email_Wife
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    sender: !secret smtp_sender
+    starttls: true
+    username: !secret smtp_username
+    password: !secret smtp_password
+    recipient: !secret smtp_recipient_wife
+
+#https://www.home-assistant.io/components/joaoapps_join/
+
+  - platform: joaoapps_join
+    name: Join
+    api_key: !secret join_api
+    device_id: !secret join_device
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

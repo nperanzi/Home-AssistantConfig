@@ -1,3 +1,11 @@
+####################################################
+#                                                  #
+#                 HOME ASSISTANT                   #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/docs/configuration/basic/
+
 homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
@@ -11,73 +19,128 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret timezone
   # Customization file
-  customize: !include customize.yaml
+  customize: !include_dir_merge_named customize/
 
-# Show links to resources in log and frontend
-#introduction:
+####################################################
+#                                                  #
+#                     GENERAL                      #
+#                                                  #
+####################################################
 
-# Enables the frontend
-frontend:
-
-# Enables configuration UI
+#https://home-assistant.io/components/config/
 config:
 
+#https://www.home-assistant.io/components/conversation/
+conversation:
+
+#https://www.home-assistant.io/components/discovery/
+#Disabled for now
+#discovery:
+
+#https://www.home-assistant.io/components/frontend/
+frontend:
+
+#https://home-assistant.io/components/history/
+history:
+
+#https://home-assistant.io/components/http/
 http:
   # Secrets are defined in the file secrets.yaml
   api_password: !secret http_password
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
+  # base_url: example.duckdns.org:8123 #reserved for future use (will need secret)
 
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+#https://home-assistant.io/components/logbook/
+logbook:
+
+#https://home-assistant.io/components/logger/
+logger:
+  default: error
+  logs:
+    homeassistant.components.sensor.template: critical
+
+#https://www.home-assistant.io/components/map/
+map:
+
+#https://home-assistant.io/components/recorder/
+recorder:
+  purge_interval: 1
+  purge_keep_days: 3
+
+#https://www.home-assistant.io/components/sun/
+sun:
+
+#https://www.home-assistant.io/components/tts/
+tts:
+  - platform: google
+
+#https://www.home-assistant.io/components/updater/
+#Keeping this until I finish the notification flow using the current verison check via REST
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   include_used_components: true
 
-# Discover some devices automatically
-discovery:
+####################################################
+#                                                  #
+#      LINKS TO INDIVUAL CONFIGURATION FILES       #
+#                                                  #
+####################################################
 
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# Enables support for tracking state changes over time
-history:
-
-# View all events in a logbook
-logbook:
-
-# Enables a map showing the location of tracked devices
-map:
-
-# Track the sun
-sun:
-
-## Weather prediction
-#sensor:
-#  - platform: yr
-
+#https://home-assistant.io/docs/configuration/splitting_configuration/
+automation: !include_dir_merge_list automation
+device_tracker: !include device_tracker.yaml
+group: !include groups.yaml
+light: !include lights.yaml
+notify: !include notifications.yaml
+script: !include scripts.yaml
 sensor: !include sensors.yaml
 
-# Text to speech
-tts:
-  - platform: google
+####################################################
+#                                                  #
+#                SESAME SMART LOCK                 #
+#                                                  #
+####################################################
 
-# Sesame smart lock
 lock:
   - platform: sesame
     email: nperanzi@gmail.com
     password: !secret sesame_password
 
+####################################################
+#                                                  #
+#                KODI MEDIA PLAYER                 #
+#                                                  #
+####################################################
+
 media_player:
   - platform: kodi
-    host: 192.168.0.151
+    host: 192.168.1.151
 
+####################################################
+#                                                  #
+#                HARMONY HUB REMOTE                #
+#                                                  #
+####################################################
 
+remote:
+  - platform: harmony
+    name: Harmony Hub
+    host: 192.168.1.102
+    activity: Kodi
 
+####################################################
+#                                                  #
+#                     ZWAVE                        #
+#                                                  #
+####################################################
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+#https://home-assistant.io/docs/z-wave/
+zwave:
+  usb_path: /dev/zwave
+  network_key: !secret zwave_key
+
+####################################################
+#                                                  #
+#            END OF CONFIGURATION FILE             #
+#                                                  #
+####################################################

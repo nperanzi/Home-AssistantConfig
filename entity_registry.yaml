@@ -1,28 +1,70 @@
 media_player.den_home:
+  config_entry_id: d1e95b41bd3842939509cbb9a84514d5
   name:
   platform: cast
   unique_id: 11bb0d57-5f0d-d928-6454-5798cb337513
 media_player.shield:
+  config_entry_id: d1e95b41bd3842939509cbb9a84514d5
   name:
   platform: cast
   unique_id: 6b662a0d-4cec-67e7-542b-09b9ea261fe7
 light.stairs_top_2:
+  config_entry_id:
   name:
   platform: hue
   unique_id: 00:17:88:01:02:6d:90:7e-0b
 light.bedroom_side_light:
+  config_entry_id:
   name:
   platform: hue
   unique_id: 00:17:88:01:10:50:4e:ff-0b
 light.stairs_bottom_2:
+  config_entry_id:
   name:
   platform: hue
   unique_id: 00:17:88:01:02:7d:8c:e2-0b
 light.stairs_bottom_1:
+  config_entry_id:
   name:
   platform: hue
   unique_id: 00:17:88:01:02:7d:84:5b-0b
 light.stairs_top_1:
+  config_entry_id:
   name:
   platform: hue
   unique_id: 00:17:88:01:10:50:86:d3-0b
+zwave.aeotec_zw090_zstick_gen5_us:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-1
+sensor.ecolink_doorwindow_sensor_sourcenodeid:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082529
+sensor.ecolink_doorwindow_sensor_burglar:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082657
+zwave.ecolink_doorwindow_sensor:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: node-4
+binary_sensor.ecolink_doorwindow_sensor_sensor:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 4-72057594110017536
+sensor.ecolink_doorwindow_sensor_alarm_type:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082497
+sensor.ecolink_doorwindow_sensor_alarm_level:
+  config_entry_id:
+  name:
+  platform: zwave
+  unique_id: 4-72057594111082513

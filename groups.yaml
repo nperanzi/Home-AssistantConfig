@@ -1,0 +1,111 @@
+#https://home-assistant.io/components/group
+
+####################################################
+#                                                  #
+#                     VIEWS                        #
+#                                                  #
+####################################################
+
+  Default_view:
+    name: Home
+    view: yes
+    icon: mdi:home
+    entities:
+      - group.location
+      - group.weather_summary
+
+  HA:
+    view: yes
+    icon: mdi:home-assistant
+    entities:
+      - group.ha_server_monitor
+      - group.ha_version_info
+      - group.zwave
+
+  Automations:
+    view: yes
+    entities:
+      - group.miscellaneous_automations
+
+#Add any other views above this line (ensure Debug remains at the end)
+
+  Debug:
+    view: yes
+    entities:
+      - group.debug_items
+
+####################################################
+#                                                  #
+#                    GROUPS                        #
+#                                                  #
+####################################################
+
+####################################################
+#                  AUTOMATIONS                     #
+####################################################
+
+  Miscellaneous Automations:
+    entities:
+      - automation.home_assistant_update_notifier
+      - automation.front_door_open_notifications
+      - lock.peranzi
+
+####################################################
+#                     LIGHTS                       #
+####################################################
+
+#Reserved for future use
+
+####################################################
+#                     OTHER                        #
+####################################################
+
+  Debug Items:
+    - lock.peranzi
+    - media_player.shield
+    - media_player.kodi
+#    - remote.harmony_hub
+    - binary_sensor.ecolink_doorwindow_sensor_sensor
+    - sensor.fdstatus
+
+  Location:
+    - sun.sun #reserved for device trackers
+
+  ZWave:
+    - zwave.aeotec_zw090_zstick_gen5_us
+    - zwave.ecolink_doorwindow_sensor
+
+####################################################
+#                   SENSORS                        #
+####################################################
+
+  HA Server Monitor:
+    - sensor.processor_use
+    - sensor.disk_use_percent_home
+    - sensor.memory_use_percent
+    - sensor.since_last_boot_templated
+    - sensor.network_in_eth0
+    - sensor.network_out_eth0
+    - sensor.cpu
+    - sensor.cpu_temperature
+#    - sensor.lets_encrypt_expiration
+    - sensor.load_1m
+    - sensor.load_5m
+    - sensor.load_15m
+
+  HA Version Info:
+    - sensor.installed_version
+    - sensor.latest_version
+
+  Weather Summary:
+    - sensor.dark_sky_daily_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_uv_index
+    - sensor.dark_sky_wind_speed
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################
