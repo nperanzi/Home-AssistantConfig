@@ -1,2 +1,48 @@
-#Reserved for future use
+#https://home-assistant.io/components/device_tracker/
 
+####################################################
+#                                                  #
+#            DEVICE TRACKER - BLUETOOTH            #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/device_tracker.bluetooth_tracker/
+
+  - platform: bluetooth_tracker
+    interval_seconds: 12
+    consider_home: 180
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: False
+
+####################################################
+#                                                  #
+#             DEVICE TRACKER - ASUSWRT             #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/device_tracker.asuswrt/
+
+#  - platform: asuswrt
+#    host: !secret router_ip
+#    username: !secret router_user
+#    password: !secret router_pass
+
+####################################################
+#                                                  #
+#           DEVICE TRACKER - GOOGLE MAPS           #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/device_tracker.google_maps/
+#Currently not working - need to investigate (see https://community.home-assistant.io/t/new-google-maps-device-tracker-issue/50328/10, maybe I need a new account without 2FA?)
+
+#  - platform: google_maps
+#    username: !secret gm_user
+#    password: !secret gm_pass
+
+####################################################
+#                                                  #
+#            END OF CONFIGUATION FILE              #
+#                                                  #
+####################################################

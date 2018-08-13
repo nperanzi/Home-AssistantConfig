@@ -54,6 +54,12 @@
       - wind_speed
       - uv_index
       - daily_summary
+      - summary
+      - precip_probability
+      - apparent_temperature
+      - cloud_cover
+      - hourly_summary
+      - visibility
     update_interal: '00:05'
 
 ####################################################
