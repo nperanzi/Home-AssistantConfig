@@ -1,0 +1,25 @@
+####################################################
+#                                                  #
+#                FRONT DOOR OPENED                 #
+#                                                  #
+####################################################
+
+  - alias: 'Front door open notifications'
+    trigger:
+    - entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor
+      from: 'off'
+      platform: state
+      to: 'on'
+    condition: []
+    action:
+    - data:
+        message: The front door has been opened.
+        title: Front Door Opened
+      service: notify.join
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################
+

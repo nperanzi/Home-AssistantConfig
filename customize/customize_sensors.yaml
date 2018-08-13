@@ -1,0 +1,22 @@
+#https://home-assistant.io/docs/configuration/customizing-devices/
+
+####################################################
+#                                                  #
+#                    SENSORS                       #
+#                                                  #
+####################################################
+
+sensor.dark_sky_daily_summary:
+  friendly_name: Overview
+
+sensor.dark_sky_temperature:
+  friendly_name: Temperature
+
+sensor.dark_sky_humidity:
+  friendly_name: Humidity
+
+sensor.dark_sky_uv_index:
+  friendly_name: UV Index
+
+sensor.dark_sky_wind_speed:
+  friendly_name: Wind Speed

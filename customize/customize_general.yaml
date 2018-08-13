@@ -1,0 +1,19 @@
+#https://home-assistant.io/docs/configuration/customizing-devices/
+
+####################################################
+#                                                  #
+#                     ZWAVE                        #
+#                                                  #
+####################################################
+
+zwave.aeotec_zw090_zstick_gen5_us:
+  friendly_name: ZWave USB Hub
+
+zwave.ecolink_doorwindow_sensor:
+  friendly_name: Ecolink ZWave Front Door Sensor
+
+####################################################
+#                                                  #
+#          END OF CONFIGURATION FILE               #
+#                                                  #
+####################################################

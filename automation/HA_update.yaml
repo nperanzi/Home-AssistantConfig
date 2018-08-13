@@ -1,0 +1,21 @@
+####################################################
+#                                                  #
+#         HOME ASSISTANT UPDATE NOTIFIER           #
+#                                                  #
+####################################################
+
+  - alias: 'Home Assistant Update Notifier'
+    trigger:
+      platform: state
+      entity_id: updater.updater
+    action:
+      service: notify.join
+      data:
+        message: 'Update for Home Assistant is available.'
+        title: 'HA Update'
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################
