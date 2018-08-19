@@ -18,7 +18,7 @@ homeassistant:
   unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: !secret timezone
-  # Customization file
+  # Customization files
   customize: !include_dir_merge_named customize/
 
 ####################################################
@@ -90,37 +90,36 @@ updater:
 automation: !include_dir_merge_list automation
 device_tracker: !include device_tracker.yaml
 group: !include groups.yaml
+input_boolean: !include input_boolean.yaml
 light: !include lights.yaml
 notify: !include notifications.yaml
 script: !include scripts.yaml
 sensor: !include sensors.yaml
+shell_command: !include shell_commands.yaml
+switch: !include switches.yaml
 
 ####################################################
 #                                                  #
-#                SESAME SMART LOCK                 #
+#                  FOSCAM CAMERA                   #
 #                                                  #
 ####################################################
 
-lock:
-  - platform: sesame
-    email: nperanzi@gmail.com
-    password: !secret sesame_password
+#https://www.home-assistant.io/components/camera.foscam/
 
-####################################################
-#                                                  #
-#                KODI MEDIA PLAYER                 #
-#                                                  #
-####################################################
-
-media_player:
-  - platform: kodi
-    host: 192.168.1.151
+camera:
+  - platform: foscam
+    ip: !secret foscam_ip
+    port: !secret foscam_port
+    username: !secret foscam_user
+    password: !secret foscam_pass
 
 ####################################################
 #                                                  #
 #                HARMONY HUB REMOTE                #
 #                                                  #
 ####################################################
+
+#https://www.home-assistant.io/components/remote.harmony/
 
 remote:
   - platform: harmony
@@ -130,11 +129,37 @@ remote:
 
 ####################################################
 #                                                  #
+#                KODI MEDIA PLAYER                 #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/media_player.kodi/
+
+media_player:
+  - platform: kodi
+    host: 192.168.1.151
+
+####################################################
+#                                                  #
+#                SESAME SMART LOCK                 #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/lock.sesame/
+
+lock:
+  - platform: sesame
+    email: !secret sesame_email
+    password: !secret sesame_password
+
+####################################################
+#                                                  #
 #                     ZWAVE                        #
 #                                                  #
 ####################################################
 
 #https://home-assistant.io/docs/z-wave/
+
 zwave:
   usb_path: /dev/zwave
   network_key: !secret zwave_key

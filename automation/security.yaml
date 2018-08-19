@@ -13,9 +13,30 @@
     condition: []
     action:
     - data:
-        message: The front door has been opened.
+        message: 'The front door was opened at {{ states.sensor.time_date.date_time.state }}'
         title: Front Door Opened
       service: notify.join
+
+####################################################
+#                                                  #
+#                FOSCAM DIS/ENABLE                 #
+#                                                  #
+####################################################
+
+  - alias: Set Foscam to Away Mode when no one is home
+    trigger:
+      platform: state
+      entity_id: group.family
+      from: 'home'
+    action:
+      service: script.foscam_on
+  - alias: Set Foscam to Home Mode when someone is home
+    trigger:
+      platform: state
+      entity_id: group.family
+      to: 'home'
+    action:
+      service: script.foscam_off
 
 ####################################################
 #                                                  #

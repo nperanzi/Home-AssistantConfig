@@ -1,0 +1,24 @@
+#https://home-assistant.io/components/switch/
+
+####################################################
+#                                                  #
+#                 FOSCAM IP CAMERA                 #
+#                                                  #
+####################################################
+
+platform: command_line
+switches:
+  #Switch for Foscam Motion Detection
+  #https://www.home-assistant.io/cookbook/foscam_away_mode_PTZ/
+  #see also https://community.home-assistant.io/t/foscam-easily-add-motion-sensor-and-other-control/4433/15
+  foscam_motion:
+    command_on: !secret foscam_cmd_on
+    command_off: !secret foscam_cmd_off
+    command_state: !secret foscam_cmd_state
+    value_template: '{{ value == "1" }}'
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

@@ -1,0 +1,37 @@
+#https://home-assistant.io/components/script/
+
+####################################################
+#                                                  #
+#                 FOSCAM RECORDING                 #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/cookbook/foscam_away_mode_PTZ/
+
+foscam_off:
+  sequence:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.foscam_motion
+  - service: shell_command.foscam_turn_off
+  - service: notify.join
+    data:
+      message: Front door camera disabled
+foscam_on:
+  sequence:
+  - service: switch.turn_off
+    data:
+      entity_id: switch.foscam_motion
+  - service: shell_command.foscam_turn_on
+  - service: switch.turn_on
+    data:
+      entity_id: switch.foscam_motion
+  - service: notify.join
+    data:
+      message: Front door camera enabled
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

@@ -1,0 +1,17 @@
+#https://home-assistant.io/components/shell_command/
+
+####################################################
+#                                                  #
+#                 FOSCAM RECORDING                 #
+#                                                  #
+####################################################
+
+foscam_turn_off: !secret foscam_shell_off
+foscam_turn_on: !secret foscam_shell_on
+
+####################################################
+#                                                  #
+#          END OF CONFIGURATION FILE               #
+#                                                  #
+####################################################
+

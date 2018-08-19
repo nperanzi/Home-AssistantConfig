@@ -25,6 +25,7 @@
   Automations:
     view: yes
     entities:
+      - group.security_automations
       - group.miscellaneous_automations
 
 #Add any other views above this line (ensure Debug remains at the end)
@@ -47,7 +48,26 @@
   Miscellaneous Automations:
     entities:
       - automation.home_assistant_update_notifier
+
+  Security Automations:
+    entities:
       - automation.front_door_open_notifications
+      - automation.set_foscam_to_away_mode_when_no_one_is_home
+      - automation.set_foscam_to_home_mode_when_someone_is_home
+
+####################################################
+#                 DEVICE TRACKERS                  #
+####################################################
+
+  Family:
+    - group.nick
+    - group.rachel
+
+  Nick:
+    - device_tracker.nicks_op3t
+
+  Rachel:
+    - device_tracker.asus_z012dc
 
 ####################################################
 #                     LIGHTS                       #
@@ -58,17 +78,22 @@
 ####################################################
 #                     OTHER                        #
 ####################################################
+  Camera_Foscam:
+    - camera.foscam_camera
 
   Debug Items:
+    - camera.foscam_camera
     - lock.peranzi
-    - media_player.shield
-    - media_player.kodi
-#    - remote.harmony_hub
+#    - media_player.shield
+#    - media_player.kodi
+    - remote.harmony_hub
     - binary_sensor.ecolink_doorwindow_sensor_sensor
-    - sensor.fdstatus
+#    - sensor.fdstatus
 
   Location:
-    - sun.sun #reserved for device trackers
+    - group.nick
+    - group.rachel
+    - input_boolean.vacation
 
   ZWave:
     - zwave.aeotec_zw090_zstick_gen5_us

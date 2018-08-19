@@ -64,6 +64,17 @@
 
 ####################################################
 #                                                  #
+#                    FAST.COM                      #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.fastdotcom/
+
+  - platform: fastdotcom
+    minute: 30
+
+####################################################
+#                                                  #
 #                      REST                        #
 #                                                  #
 ####################################################
@@ -74,6 +85,20 @@
     name: Latest Version
     value_template: "{{ value_json.info.version }}"
     scan_interval: 3600
+
+####################################################
+#                                                  #
+#                   SPEEDTEST                      #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.speedtest
+
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
 
 ####################################################
 #                                                  #
@@ -97,6 +122,20 @@
       - type: load_5m
       - type: load_15m
 
+####################################################
+#                                                  #
+#                     TIME/DATE                    #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.time_date/
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+      - 'date_time'
+      - 'time_date'
+      - 'time_utc'
 
 ####################################################
 #                                                  #
@@ -107,10 +146,6 @@
 #https://home-assistant.io/components/sensor.template/
   - platform: template
     sensors:
-
-#      fdstatus:
-#        value_template: '{% if is_state("binary_sensor.ecolink_doorwindow_sensor_sensor", "off") %}Closed{% else %}Open{% endif %}'
-#        friendly_name: 'FD'
 
       since_last_boot_templated:
         value_template: >-
