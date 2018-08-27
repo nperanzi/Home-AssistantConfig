@@ -20,6 +20,7 @@
     entities:
       - group.ha_server_monitor
       - group.ha_version_info
+      - group.network_info
       - group.zwave
 
   Automations:
@@ -120,6 +121,13 @@
   HA Version Info:
     - sensor.installed_version
     - sensor.latest_version
+
+  Network Info:
+    - sensor.fastcom_download
+    - sensor.speedtest_download
+    - sensor.speedtest_upload
+    - sensor.speedtest_ping
+
 
   Weather Summary:
     - sensor.dark_sky_summary

@@ -74,12 +74,6 @@ sun:
 tts:
   - platform: google
 
-#https://www.home-assistant.io/components/updater/
-#Keeping this until I finish the notification flow using the current verison check via REST
-updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  include_used_components: true
-
 ####################################################
 #                                                  #
 #      LINKS TO INDIVUAL CONFIGURATION FILES       #

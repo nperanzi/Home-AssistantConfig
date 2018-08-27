@@ -23,6 +23,7 @@ foscam_on:
     data:
       entity_id: switch.foscam_motion
   - service: shell_command.foscam_turn_on
+  - delay: '00:00:10'
   - service: switch.turn_on
     data:
       entity_id: switch.foscam_motion

@@ -7,12 +7,12 @@
   - alias: 'Home Assistant Update Notifier'
     trigger:
       platform: state
-      entity_id: updater.updater
+      entity_id: sensor.latest_version
     action:
       service: notify.join
       data:
-        message: 'Update for Home Assistant is available.'
-        title: 'HA Update'
+        message: 'Update for Home Assistant is available. Current version: {{ states.sensor.installed_version.state }}; latest version: {{ states.sensor.latest_version.state }}'
+        title: 'Home Assistant Update Available ({{ states.sensor.latest_version.state }})'
 
 ####################################################
 #                                                  #
