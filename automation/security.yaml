@@ -1,5 +1,39 @@
 ####################################################
 #                                                  #
+#               AUTO-LOCK AT NIGHT                 #
+#                                                  #
+####################################################
+
+  - alias: Lock front door at night
+    trigger:
+      platform: time
+      at: '20:30:00'
+    action:
+      - service: lock.lock
+        entity_id:
+          - lock.peranzi
+
+####################################################
+#                                                  #
+#           AUTO-LOCK IF NO ONE IS HOME            #
+#                                                  #
+####################################################
+
+  - alias: Lock front door after we leave
+    trigger:
+      platform: state
+      entity_id: group.family
+      from: 'home'
+      to: 'not_home'
+      for:
+        minutes: 5
+    action:
+      - service: lock.lock
+        entity_id:
+          - lock.peranzi
+
+####################################################
+#                                                  #
 #                FRONT DOOR OPENED                 #
 #                                                  #
 ####################################################
