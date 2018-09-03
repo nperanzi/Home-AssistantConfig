@@ -14,6 +14,13 @@
       - group.location
       - group.weather_summary
 
+  Control:
+    view: yes
+    icon: mdi:remote
+    entities:
+      - group.climate
+      - group.security
+
   HA:
     view: yes
     icon: mdi:home-assistant
@@ -66,9 +73,11 @@
 
   Nick:
     - device_tracker.nicks_op3t
+    - device_tracker.op3t
 
   Rachel:
     - device_tracker.asus_z012dc
+    - device_tracker.38d547385515
 
 ####################################################
 #                     LIGHTS                       #
@@ -82,6 +91,9 @@
   Camera_Foscam:
     - camera.foscam_camera
 
+  Climate:
+    - switch.air_conditioner
+
   Debug Items:
     - camera.foscam_camera
     - lock.peranzi
@@ -90,6 +102,12 @@
     - remote.harmony_hub
     - binary_sensor.ecolink_doorwindow_sensor_sensor
 #    - sensor.fdstatus
+    - switch.air_conditioner
+
+  Security:
+    - lock.peranzi
+    - script.foscam_on
+    - script.foscam_off
 
   Location:
     - group.nick

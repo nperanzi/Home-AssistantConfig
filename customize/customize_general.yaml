@@ -2,7 +2,32 @@
 
 ####################################################
 #                                                  #
-#                     ZWAVE                        #
+#                      LOCKS                       #
+#                                                  #
+####################################################
+
+lock.peranzi:
+  friendly_name: Front Door Lock
+
+####################################################
+#                                                  #
+#                     SCRIPTS                      #
+#                                                  #
+####################################################
+
+script.foscam_on:
+  friendly_name: Enable Camera
+  can_cancel: false
+  icon: mdi:camera
+
+script.foscam_off:
+  friendly_name: Disable Camera
+  icon: mdi:camera-off
+  can_cancel: false
+
+####################################################
+#                                                  #
+#                      ZWAVE                       #
 #                                                  #
 ####################################################
 

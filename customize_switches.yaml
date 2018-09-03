@@ -1,0 +1,17 @@
+#https://home-assistant.io/docs/configuration/customizing-devices/
+
+####################################################
+#                                                  #
+#                   SWITCHES                       #
+#                                                  #
+####################################################
+
+switch.air_conditioner:
+  friendly_name: Window AC
+  icon: mdi:air-conditioner
+
+####################################################
+#                                                  #
+#          END OF CONFIGURATION FILE               #
+#                                                  #
+####################################################
