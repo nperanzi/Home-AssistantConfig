@@ -22,11 +22,12 @@
 ####################################################
 
 #https://www.home-assistant.io/components/device_tracker.asuswrt/
+#currently working inconsistently - may reintroduce if I move to Bayesian presence detection
 
-  - platform: asuswrt
-    host: !secret router_ip
-    username: !secret router_user
-    password: !secret router_pass
+#  - platform: asuswrt
+#    host: !secret router_ip
+#    username: !secret router_user
+#    password: !secret router_pass
 
 ####################################################
 #                                                  #
@@ -37,9 +38,10 @@
 #https://www.home-assistant.io/components/device_tracker.google_maps/
 #Currently not working - need to investigate (see https://community.home-assistant.io/t/new-google-maps-device-tracker-issue/50328/10, maybe I need a new account without 2FA?)
 
-#  - platform: google_maps
-#    username: !secret gm_user
-#    password: !secret gm_pass
+  - platform: google_maps
+    username: !secret gm_user
+    password: !secret gm_pass
+    track_new_devices: true
 
 ####################################################
 #                                                  #

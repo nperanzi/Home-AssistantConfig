@@ -62,6 +62,9 @@
       - automation.front_door_open_notifications
       - automation.set_foscam_to_away_mode_when_no_one_is_home
       - automation.set_foscam_to_home_mode_when_someone_is_home
+      - automation.lock_front_door_at_night
+      - automation.lock_front_door_after_we_leave
+      - automation.front_door_unlocked_notifications
 
 ####################################################
 #                 DEVICE TRACKERS                  #
@@ -73,11 +76,11 @@
 
   Nick:
     - device_tracker.nicks_op3t
-    - device_tracker.op3t
+#    - device_tracker.op3t
 
   Rachel:
     - device_tracker.asus_z012dc
-    - device_tracker.38d547385515
+#    - device_tracker.38d547385515
 
 ####################################################
 #                     LIGHTS                       #

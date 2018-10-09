@@ -6,12 +6,19 @@
 
   - alias: Lock front door at night
     trigger:
-      platform: time
-      at: '20:30:00'
+      platform: state
+      entity_id: lock.peranzi
+      to: 'unlocked'
+      for:
+        hours: 0
+        minutes: 30
+    condition:
+      condition: time
+      after: '20:30:00'
+      before: '05:30:00'
     action:
-      - service: lock.lock
-        entity_id:
-          - lock.peranzi
+      service: lock.lock
+      entity_id: lock.peranzi
 
 ####################################################
 #                                                  #
@@ -27,10 +34,13 @@
       to: 'not_home'
       for:
         minutes: 5
+    condition:
+      condition: state
+      entity_id: lock.peranzi
+      state: 'unlocked'
     action:
-      - service: lock.lock
-        entity_id:
-          - lock.peranzi
+      service: lock.lock
+      entity_id: lock.peranzi
 
 ####################################################
 #                                                  #
@@ -47,8 +57,26 @@
     condition: []
     action:
     - data:
-        message: 'The front door was opened at {{ states.sensor.time_date.date_time.state }}'
+        message: 'The front door was opened at {{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
         title: Front Door Opened
+      service: notify.join
+
+####################################################
+#                                                  #
+#                FRONT DOOR UNLOCKED               #
+#                                                  #
+####################################################
+
+  - alias: 'Front door unlocked notifications'
+    trigger:
+    - entity_id: lock.peranzi
+      from: 'locked'
+      platform: state
+      to: 'unlocked'
+    action:
+    - data:
+        message: 'The front door was unlocked at {{ now().strftime("%Y-%m-%d %H:%M:%S") }}'
+        title: Front Door Unlocked
       service: notify.join
 
 ####################################################
