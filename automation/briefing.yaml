@@ -1,0 +1,26 @@
+####################################################
+#                                                  #
+#             RACHEL WORKDAY WEATHER               #
+#                                                  #
+####################################################
+
+  - alias: Rachel workday weather details
+    trigger:
+      platform: time
+      at: '08:00:00'
+    condition:
+      condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+    action:
+      service: script.weather_briefing_wife
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################
+

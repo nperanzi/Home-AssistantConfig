@@ -24,10 +24,10 @@
 #https://www.home-assistant.io/components/device_tracker.asuswrt/
 #currently working inconsistently - may reintroduce if I move to Bayesian presence detection
 
-#  - platform: asuswrt
-#    host: !secret router_ip
-#    username: !secret router_user
-#    password: !secret router_pass
+  - platform: asuswrt
+    host: !secret router_ip
+    username: !secret router_user
+    password: !secret router_pass
 
 ####################################################
 #                                                  #

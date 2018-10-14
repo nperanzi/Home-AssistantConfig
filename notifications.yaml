@@ -35,6 +35,23 @@
     api_key: !secret join_api
     device_id: !secret join_device
 
+#https://www.home-assistant.io/components/notify.hangouts/
+
+  - name: hangouts
+    platform: hangouts
+    default_conversations:
+      - id: !secret hangouts_id
+
+  - name: hangouts_wife
+    platform: hangouts
+    default_conversations:
+      - id: !secret hangouts_id_wife
+
+  - name: hangouts_all
+    platform: hangouts
+    default_conversations:
+      - id: !secret hangouts_id_all
+
 ####################################################
 #                                                  #
 #           END OF CONFIGURATION FILE              #

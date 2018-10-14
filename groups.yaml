@@ -33,6 +33,7 @@
   Automations:
     view: yes
     entities:
+      - group.alert_automations
       - group.security_automations
       - group.miscellaneous_automations
 
@@ -52,6 +53,11 @@
 ####################################################
 #                  AUTOMATIONS                     #
 ####################################################
+  Alert Automations:
+    entities:
+      - automation.front_door_open_notifications
+      - automation.front_door_unlocked_notifications
+      - automation.rachel_workday_weather_details
 
   Miscellaneous Automations:
     entities:
@@ -59,12 +65,11 @@
 
   Security Automations:
     entities:
-      - automation.front_door_open_notifications
       - automation.set_foscam_to_away_mode_when_no_one_is_home
       - automation.set_foscam_to_home_mode_when_someone_is_home
+      - automation.lock_front_door_at_830pm
       - automation.lock_front_door_at_night
       - automation.lock_front_door_after_we_leave
-      - automation.front_door_unlocked_notifications
 
 ####################################################
 #                 DEVICE TRACKERS                  #

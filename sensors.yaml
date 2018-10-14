@@ -2,6 +2,22 @@
 
 ####################################################
 #                                                  #
+#                   AIRVISUAL                      #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.airvisual/
+  - platform: airvisual
+    api_key: !secret airvisual_api
+    monitored_conditions:
+      - us
+      - cn
+    show_on_map: false
+    latitude: !secret latitude
+    longitude: !secret longitude
+
+####################################################
+#                                                  #
 #                 COMMAND LINE                     #
 #                                                  #
 ####################################################
@@ -60,6 +76,11 @@
       - cloud_cover
       - hourly_summary
       - visibility
+      - precip_type
+      - apparent_temperature_high
+      - apparent_temperature_low
+      - precip_accumulation
+      - minutely_summary
     update_interval: '00:05'
 
 ####################################################
@@ -72,6 +93,23 @@
 
   - platform: fastdotcom
     minute: 30
+
+####################################################
+#                                                  #
+#                   POLLEN.COM                     #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/sensor.pollen/
+  - platform: pollen
+    zip_code: !secret zipcode
+    monitored_conditions:
+      - allergy_average_forecasted
+      - allergy_average_historical
+      - allergy_index_today
+      - allergy_index_tomorrow
+      - allergy_index_yesterday
+      - disease_average_forecasted
 
 ####################################################
 #                                                  #
