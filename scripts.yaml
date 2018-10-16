@@ -37,7 +37,47 @@ foscam_on:
 #                                                  #
 ####################################################
 
-#
+weather_briefing:
+  sequence:
+  - service: hangouts.send_message
+    data_template:
+      target: 
+        - id: !secret hangouts_id
+      message:
+        - text: >
+            {% if now().strftime("%H")|int < 12 %}
+            Good morning
+            {% elif now().strftime("%H")|int < 18 %}
+            Good afternoon
+            {% else %}
+            Good evening
+            {% endif %}
+            Nick,
+        - text: "" #newline
+        - text: "Weather"
+          is_underline: true
+        - text: It's currently {{states.sensor.dark_sky_summary.state}}.
+        - text: >
+            It feels like {{states.sensor.dark_sky_apparent_temperature.state | round(0)}}; 
+            it will range from {{states.sensor.dark_sky_overnight_low_apparent_temperature.state | round(0)}}
+            to {{states.sensor.dark_sky_daytime_high_apparent_temperature.state | round(0)}} today.
+        - text: >
+            {% if states('sensor.dark_sky_precip_probability') | float > 0 %}
+            {{states.sensor.dark_sky_precip_type.state}} is expected today (probability {{states.sensor.dark_sky_precip_probability.state | round(2)}}).
+            {% else %}
+            No precipitation is expected today.
+            {% endif %}
+          is_bold: true
+        - text: ""
+        - text: "Air Quality"
+          is_underline: true
+        - text: >
+            Today's allergen index is {{states.sensor.allergy_index_today.state | round(1)}}/12, compared to 
+            {{states.sensor.allergy_index_yesterday.state | round(1)}} yesterday.
+        - text: Today's air pollution level is {{states.sensor.us_air_pollution_level.state}} (index {{states.sensor.us_air_quality_index.state}}).
+        - text: ""
+        - text: "Have a great day!"
+      data: {} #required due to bug in hangouts implementation - see https://github.com/home-assistant/home-assistant/issues/17257
 
 weather_briefing_wife:
   sequence:
