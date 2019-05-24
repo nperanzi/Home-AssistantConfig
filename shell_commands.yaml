@@ -8,6 +8,8 @@
 
 foscam_turn_off: !secret foscam_shell_off
 foscam_turn_on: !secret foscam_shell_on
+foscam2_turn_off: !secret foscam2_shell_off
+foscam2_turn_on: !secret foscam2_shell_on
 
 ####################################################
 #                                                  #

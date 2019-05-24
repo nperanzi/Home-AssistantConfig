@@ -31,9 +31,9 @@
 #https://www.home-assistant.io/components/joaoapps_join/
 
   - platform: joaoapps_join
-    name: Join
     api_key: !secret join_api
     device_id: !secret join_device
+    name: Join
 
 #https://www.home-assistant.io/components/notify.hangouts/
 

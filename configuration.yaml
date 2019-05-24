@@ -27,6 +27,17 @@ homeassistant:
 #                                                  #
 ####################################################
 
+#https://www.home-assistant.io/components/asuswrt/
+asuswrt:
+  host: !secret router_ip
+  username: !secret router_user
+  ssh_key: !secret router_keyfile
+  sensors:
+    - upload
+    - download
+    - upload_speed
+    - download_speed
+
 #https://home-assistant.io/components/config/
 config:
 
@@ -42,12 +53,42 @@ frontend:
 
 #https://home-assistant.io/components/history/
 history:
+  include:
+    domains:
+      - switch
+      - media_player
+      - remote
+    entities:
+      - group.nick
+      - group.rachel
+      - binary_sensor.ecolink_doorwindow_sensor_sensor
+      - sensor.installed_version
+      - sensor.latest_version
+      - sensor.us_air_pollution_level
+      - sensor.last_boot
+      - sensor.fast_com_download
+      - sensor.speedtest_download
+      - sensor.speedtest_ping
+      - sensor.speedtest_upload
+      - sun.sun
+      - sensor.dark_sky_apparent_temperature
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_cloud_coverage
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_nearest_storm_distance
+      - sensor.dark_sky_nearest_storm_bearing
+      - sensor.dark_sky_precip
+      - sensor.dark_sky_precip_intensity
+      - sensor.dark_sky_pressure
+      - sensor.dark_sky_uv_index
+      - sensor.dark_sky_visibility
+      - sensor.dark_sky_wind_bearing
+      - sensor.dark_sky_wind_speed
+      - sensor.processor_use
+      - sensor.cpu_temperature
 
 #https://home-assistant.io/components/http/
 http:
-  # Secrets are defined in the file secrets.yaml
-  api_password: !secret http_password
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   base_url: !secret base_url
 
 #https://home-assistant.io/components/logbook/
@@ -58,6 +99,7 @@ logger:
   default: error
   logs:
     homeassistant.components.sensor.template: critical
+    homeassistant.components.stream: debug
 
 #https://www.home-assistant.io/components/map/
 map:
@@ -67,12 +109,19 @@ recorder:
   purge_interval: 1
   purge_keep_days: 3
 
+#https://www.home-assistant.io/components/stream/
+stream:
+
 #https://www.home-assistant.io/components/sun/
 sun:
 
+#https://www.home-assistant.io/components/system_health/
+system_health:
+
 #https://www.home-assistant.io/components/tts/
 tts:
-  - platform: google
+  - platform: google_translate
+    service_name: google_say
 
 ####################################################
 #                                                  #
@@ -86,11 +135,39 @@ device_tracker: !include device_tracker.yaml
 group: !include groups.yaml
 input_boolean: !include input_boolean.yaml
 light: !include lights.yaml
+media_player: !include media_players.yaml
 notify: !include notifications.yaml
 script: !include scripts.yaml
 sensor: !include sensors.yaml
 shell_command: !include shell_commands.yaml
 switch: !include switches.yaml
+
+####################################################
+#                                                  #
+#                     CLIMATE                      #
+#                                                  #
+####################################################
+
+#https://github.com/smartHomeHub/SmartIR/blob/master/docs/CLIMATE.md
+
+climate:
+  - platform: smartir
+    name: Bedroom AC
+    unique_id: bedroom_ac
+    device_code: 1700
+    controller_data: !secret broadlink_ip
+
+
+####################################################
+#                                                  #
+#                   FASTDOTCOM                     #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/fastdotcom/
+fastdotcom:
+  scan_interval:
+      minutes: 30
 
 ####################################################
 #                                                  #
@@ -106,6 +183,22 @@ camera:
     port: !secret foscam_port
     username: !secret foscam_user
     password: !secret foscam_pass
+    rtsp_port: !secret foscam_port
+    name: Front Door
+  - platform: foscam
+    ip: !secret foscam_ip_2
+    port: !secret foscam_port
+    username: !secret foscam_user
+    password: !secret foscam_pass
+    rtsp_port: !secret foscam_port
+    name: Living Room
+  - platform: generic
+    still_image_url: "http://192.168.1.158:88/cgi-bin/CGIProxy.fcgi?usr=hass&pwd=ZXkRWnh3ap17&cmd=snapPicture2"
+    stream_source: "rtsp://hass:ZXkRWnh3ap17@192.168.1.158:88/videoMain"
+    name: "Test"
+    username: hass
+    password: ZXkRWnh3ap17
+    verify_ssl: false
 
 ####################################################
 #                                                  #
@@ -123,15 +216,50 @@ remote:
 
 ####################################################
 #                                                  #
-#                KODI MEDIA PLAYER                 #
+#            IQVIA (FORMERLY POLLEN.COM)           #
 #                                                  #
 ####################################################
 
-#https://www.home-assistant.io/components/media_player.kodi/
+#https://www.home-assistant.io/components/iqvia/
 
-media_player:
-  - platform: kodi
-    host: 192.168.1.151
+iqvia:
+  zip_code: !secret zipcode
+  monitored_conditions:
+    - allergy_average_forecasted
+    - allergy_index_today
+    - allergy_index_tomorrow
+    - asthma_average_forecasted
+    - asthma_index_today
+    - asthma_index_tomorrow
+    - disease_average_forecasted
+    - disease_index_today
+
+####################################################
+#                                                  #
+#                 JOAOAPPS (JOIN)                  #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/joaoapps_join/
+
+joaoapps_join:
+  - name: Join_Android
+    device_id: group.android
+    api_key: !secret join_api
+
+####################################################
+#                                                  #
+#                   PHILIPS HUE                    #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/hue/
+
+hue:
+  bridges:
+    - host: 192.168.1.157
+      allow_unreachable: true
+      allow_hue_groups: true
 
 ####################################################
 #                                                  #
@@ -143,8 +271,43 @@ media_player:
 
 lock:
   - platform: sesame
-    email: !secret sesame_email
-    password: !secret sesame_password
+    api_key: !secret sesame_api
+
+####################################################
+#                                                  #
+#                     SMARTIR                      #
+#                                                  #
+####################################################
+
+#https://github.com/smartHomeHub/SmartIR
+
+smartir:
+
+####################################################
+#                                                  #
+#                SPEEDTESTDOTNET                   #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/speedtestdotnet/
+
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+####################################################
+#                                                  #
+#                     TP-LINK                      #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/tplink/
+
+tplink:
 
 ####################################################
 #                                                  #

@@ -2,6 +2,21 @@
 
 ####################################################
 #                                                  #
+#               BROADLINK AUTO-LEARN               #
+#                                                  #
+####################################################
+
+#https://github.com/unclehook/BroadlinkIRTools
+
+broadlink_autolearn:
+  alias: broadlink_autolearn
+  sequence:
+  - data:
+      host: 192.168.1.122
+    service: broadlink.learn
+
+####################################################
+#                                                  #
 #                 FOSCAM RECORDING                 #
 #                                                  #
 ####################################################
@@ -14,22 +29,24 @@ foscam_off:
     data:
       entity_id: switch.foscam_motion
   - service: shell_command.foscam_turn_off
+  - service: shell_command.foscam2_turn_off
   - service: notify.join
     data:
-      message: Front door camera disabled
+      message: Security cameras disabled
 foscam_on:
   sequence:
   - service: switch.turn_off
     data:
       entity_id: switch.foscam_motion
   - service: shell_command.foscam_turn_on
+  - service: shell_command.foscam2_turn_on
   - delay: '00:00:20'
   - service: switch.turn_on
     data:
       entity_id: switch.foscam_motion
   - service: notify.join
     data:
-      message: Front door camera enabled
+      message: Security cameras enabled
 
 ####################################################
 #                                                  #
@@ -59,11 +76,11 @@ weather_briefing:
         - text: It's currently {{states.sensor.dark_sky_summary.state}}.
         - text: >
             It feels like {{states.sensor.dark_sky_apparent_temperature.state | round(0)}}; 
-            it will range from {{states.sensor.dark_sky_overnight_low_apparent_temperature.state | round(0)}}
-            to {{states.sensor.dark_sky_daytime_high_apparent_temperature.state | round(0)}} today.
+            it will range from {{states.sensor.dark_sky_overnight_low_apparent_temperature_0d.state | round(0)}}
+            to {{states.sensor.dark_sky_daytime_high_apparent_temperature_0d.state | round(0)}} today.
         - text: >
-            {% if states('sensor.dark_sky_precip_probability') | float > 0 %}
-            {{states.sensor.dark_sky_precip_type.state}} is expected today (probability {{states.sensor.dark_sky_precip_probability.state | round(2)}}).
+            {% if states('sensor.dark_sky_precip_probability_0d') | float > 10 %}
+            There is a {{states.sensor.dark_sky_precip_probability_0d.state | round(2)}}% chance of {{states.sensor.dark_sky_precip_0d.state}} today.
             {% else %}
             No precipitation is expected today.
             {% endif %}
@@ -71,13 +88,10 @@ weather_briefing:
         - text: ""
         - text: "Air Quality"
           is_underline: true
-        - text: >
-            Today's allergen index is {{states.sensor.allergy_index_today.state | round(1)}}/12, compared to 
-            {{states.sensor.allergy_index_yesterday.state | round(1)}} yesterday.
+        - text: Today's allergen index is {{states.sensor.allergy_index_today_2.state | round(1)}}/12.
         - text: Today's air pollution level is {{states.sensor.us_air_pollution_level.state}} (index {{states.sensor.us_air_quality_index.state}}).
         - text: ""
         - text: "Have a great day!"
-      data: {} #required due to bug in hangouts implementation - see https://github.com/home-assistant/home-assistant/issues/17257
 
 weather_briefing_wife:
   sequence:
@@ -101,11 +115,11 @@ weather_briefing_wife:
         - text: It's currently {{states.sensor.dark_sky_summary.state}}.
         - text: >
             It feels like {{states.sensor.dark_sky_apparent_temperature.state | round(0)}}; 
-            it will range from {{states.sensor.dark_sky_overnight_low_apparent_temperature.state | round(0)}}
-            to {{states.sensor.dark_sky_daytime_high_apparent_temperature.state | round(0)}} today.
+            it will range from {{states.sensor.dark_sky_overnight_low_apparent_temperature_0d.state | round(0)}}
+            to {{states.sensor.dark_sky_daytime_high_apparent_temperature_0d.state | round(0)}} today.
         - text: >
-            {% if states('sensor.dark_sky_precip_probability') | float > 0 %}
-            {{states.sensor.dark_sky_precip_type.state}} is expected today (probability {{states.sensor.dark_sky_precip_probability.state | round(2)}}).
+            {% if states('sensor.dark_sky_precip_probability_0d') | float > 10 %}
+            There is a {{states.sensor.dark_sky_precip_probability_0d.state | round(2)}}% chance of {{states.sensor.dark_sky_precip_0d.state}} today.
             {% else %}
             No precipitation is expected today.
             {% endif %}
@@ -113,13 +127,10 @@ weather_briefing_wife:
         - text: ""
         - text: "Air Quality"
           is_underline: true
-        - text: >
-            Today's allergen index is {{states.sensor.allergy_index_today.state | round(1)}}/12, compared to 
-            {{states.sensor.allergy_index_yesterday.state | round(1)}} yesterday.
+        - text: Today's allergen index is {{states.sensor.allergy_index_today_2.state | round(1)}}/12.
         - text: Today's air pollution level is {{states.sensor.us_air_pollution_level.state}} (index {{states.sensor.us_air_quality_index.state}}).
         - text: ""
         - text: "Have a great day!"
-      data: {} #required due to bug in hangouts implementation - see https://github.com/home-assistant/home-assistant/issues/17257
 
 ####################################################
 #                                                  #

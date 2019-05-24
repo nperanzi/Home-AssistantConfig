@@ -1,30 +1,30 @@
-#https://home-assistant.io/components/input_boolean/
+#https://www.home-assistant.io/components/media_player
 
 ####################################################
 #                                                  #
-#                 VACATION MODE                    #
+#                KODI MEDIA PLAYER                 #
 #                                                  #
 ####################################################
 
-  guest:
-    name: Guest Mode
-    initial: off
-    icon: mdi:account-multiple-plus
+#https://www.home-assistant.io/components/media_player.kodi/
+
+#  - platform: kodi
+#    host: 192.168.1.151
 
 ####################################################
 #                                                  #
-#                 VACATION MODE                    #
+#                     SPOTIFY                      #
 #                                                  #
 ####################################################
 
-  vacation:
-    name: Vacation Mode
-    initial: off
-    icon: mdi:beach
+#https://www.home-assistant.io/components/spotify/
+
+  - platform: spotify
+    client_id: !secret spotify_id
+    client_secret: !secret spotify_secret
 
 ####################################################
 #                                                  #
 #           END OF CONFIGURATION FILE              #
 #                                                  #
 ####################################################
-

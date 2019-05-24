@@ -2,6 +2,19 @@
 
 ####################################################
 #                                                  #
+#                    BROADLINK                     #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/broadlink/
+
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: '78:0f:77:d6:52:36'
+    type: rm_mini
+
+####################################################
+#                                                  #
 #                 FOSCAM IP CAMERA                 #
 #                                                  #
 ####################################################
@@ -16,18 +29,31 @@
         command_off: !secret foscam_cmd_off
         command_state: !secret foscam_cmd_state
         value_template: '{{ value == "1" }}'
+        friendly_name: Front Door Motion
+      foscam_view:
+        command_on: !secret foscam_shell_on
+        command_off: !secret foscam_shell_off
+        friendly_name: View Front Door
+      foscam2_motion:
+        command_on: !secret foscam2_cmd_on
+        command_off: !secret foscam2_cmd_off
+        command_state: !secret foscam2_cmd_state
+        value_template: '{{ value == "1" }}'
+        friendly_name: Living Room Motion
+      foscam2_view:
+        command_on: !secret foscam2_shell_on
+        command_off: !secret foscam2_shell_off
+        friendly_name: View Living Room
 
 ####################################################
 #                                                  #
-#                  TP-LINK SWITCH                  #
+#                    SWITCHBOT                     #
 #                                                  #
 ####################################################
 
-#https://www.home-assistant.io/components/switch.tplink/
-
-  - platform: tplink
-    host: 192.168.1.159
-    name: Air Conditioner
+  - platform: switchbot
+    mac: 'F5:AB:A8:6D:46:AC'
+    name: Apartment Buzzer
 
 ####################################################
 #                                                  #
