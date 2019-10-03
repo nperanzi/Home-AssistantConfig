@@ -154,7 +154,7 @@ climate:
   - platform: smartir
     name: Bedroom AC
     unique_id: bedroom_ac
-    device_code: 1700
+    device_code: 9999
     controller_data: !secret broadlink_ip
 
 
@@ -192,13 +192,6 @@ camera:
     password: !secret foscam_pass
     rtsp_port: !secret foscam_port
     name: Living Room
-  - platform: generic
-    still_image_url: "http://192.168.1.158:88/cgi-bin/CGIProxy.fcgi?usr=hass&pwd=ZXkRWnh3ap17&cmd=snapPicture2"
-    stream_source: "rtsp://hass:ZXkRWnh3ap17@192.168.1.158:88/videoMain"
-    name: "Test"
-    username: hass
-    password: ZXkRWnh3ap17
-    verify_ssl: false
 
 ####################################################
 #                                                  #
@@ -318,7 +311,7 @@ tplink:
 #https://home-assistant.io/docs/z-wave/
 
 zwave:
-  usb_path: /dev/zwave
+  usb_path: /dev/ttyACM0
   network_key: !secret zwave_key
 
 ####################################################

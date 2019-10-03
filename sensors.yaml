@@ -31,7 +31,7 @@
 
   -  platform: command_line
      name: Installed version
-     command: "head -5 /home/homeassistant/.homeassistant/.HA_VERSION"
+     command: "head -5 /config/.HA_VERSION"
 
 ####################################################
 #                                                  #
