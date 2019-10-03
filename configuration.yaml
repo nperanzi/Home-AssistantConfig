@@ -157,6 +157,19 @@ climate:
     device_code: 9999
     controller_data: !secret broadlink_ip
 
+####################################################
+#                                                  #
+#                   FASTDOTCOM                     #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/ecovacs/
+
+ecovacs:
+  username: ecovacs_user
+  password: ecovacs_pass
+  country: us
+  continent: na
 
 ####################################################
 #                                                  #
