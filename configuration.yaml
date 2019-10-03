@@ -166,8 +166,8 @@ climate:
 #https://www.home-assistant.io/integrations/ecovacs/
 
 ecovacs:
-  username: ecovacs_user
-  password: ecovacs_pass
+  username: !secret ecovacs_user
+  password: !secret ecovacs_pass
   country: us
   continent: na
 
