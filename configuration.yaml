@@ -159,20 +159,6 @@ climate:
 
 ####################################################
 #                                                  #
-#                      ECOVACS                     #
-#                                                  #
-####################################################
-
-#https://www.home-assistant.io/integrations/ecovacs/
-
-ecovacs:
-  username: !secret ecovacs_user
-  password: !secret ecovacs_pass
-  country: us
-  continent: na
-
-####################################################
-#                                                  #
 #                   FASTDOTCOM                     #
 #                                                  #
 ####################################################
