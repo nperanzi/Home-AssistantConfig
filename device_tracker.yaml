@@ -22,7 +22,6 @@
 ####################################################
 
 #https://www.home-assistant.io/components/device_tracker.google_maps/
-#Currently not working - need to investigate (see https://community.home-assistant.io/t/new-google-maps-device-tracker-issue/50328/10, maybe I need a new account without 2FA?)
 
   - platform: google_maps
     username: !secret gm_user
