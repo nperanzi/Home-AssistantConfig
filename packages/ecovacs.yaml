@@ -30,7 +30,7 @@ input_boolean:
     initial: off
   disable_daily_vacuum:
     name: Disable Daily Vacuum Automation
-    initial: on
+    initial: off
   disable_dustbin_notification:
     name: Disable Dustbin Notification
     initial: off
@@ -91,7 +91,7 @@ automation:
   - alias: Send alert after daily vacuum to empty the dustbin
     trigger:
     - platform: state
-      entity_id: group.family_presence
+      entity_id: group.family
       to: 'home'
       for:
         minutes: 2
