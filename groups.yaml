@@ -15,21 +15,11 @@
     - group.rachel
 
   Nick:
-  #  - device_tracker.nicks_op3t
-  #  - device_tracker.op3t
     - device_tracker.N_Pixel_Wifi
     - device_tracker.google_maps_113430784167279752458
 
   Rachel:
-  #  - device_tracker.asus_z012dc
-  #  - device_tracker.38d547385515
     - device_tracker.R_Pixel_Wifi
-
-####################################################
-#                     LIGHTS                       #
-####################################################
-
-#Reserved for future use
 
 ####################################################
 #                     OTHER                        #
