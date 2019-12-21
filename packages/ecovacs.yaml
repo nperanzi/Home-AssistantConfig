@@ -34,6 +34,9 @@ input_boolean:
   disable_dustbin_notification:
     name: Disable Dustbin Notification
     initial: off
+  vacuum_notification_sent:
+    name: Vacuum Notification Sent
+    initial: off
 
 sensor:
   - platform: template
@@ -87,6 +90,8 @@ automation:
     action:
     - service: homeassistant.turn_off
       entity_id: input_boolean.daily_vacuum_first_run
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.vacuum_notification_sent
 
   - alias: Send alert after daily vacuum to empty the dustbin
     trigger:
@@ -115,6 +120,9 @@ automation:
       - condition: state
         entity_id: input_boolean.disable_dustbin_notification
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.vacuum_notification_sent
+        state: 'off'
     action:
       - service_template: >
           {% if (is_state('group.nick', 'home')) and (is_state('group.rachel', 'home'))  %}
@@ -127,3 +135,5 @@ automation:
         data:
           message: 'Hey, the vacuum dustbin needs to be cleared'
           title: 'Vacuum Dustbin'
+      - service: homeassistant.turn_on
+        entity_id: input_boolean.vacuum_notification_sent
