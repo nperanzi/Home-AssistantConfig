@@ -1,0 +1,22 @@
+####################################################
+#                                                  #
+#        TURN ON LIGHTS WHEN WE COME HOME          #
+#                                                  #
+####################################################
+
+  - alias: Turn on lights when we come home
+    trigger:
+      platform: state
+      entity_id: group.family
+      to: 'home'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: light.stairs_bottom_1
+          brightness_pct: 100
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################
