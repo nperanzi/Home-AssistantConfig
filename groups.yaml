@@ -20,6 +20,7 @@
 
   Rachel:
     - device_tracker.R_Pixel_Wifi
+    - device_tracker.google_maps_105617393859143397423
 
 ####################################################
 #                     OTHER                        #

@@ -26,6 +26,7 @@
   - platform: google_maps
     username: !secret gm_user
     track_new_devices: true
+    max_gps_accuracy: 50
 
 ####################################################
 #                                                  #
