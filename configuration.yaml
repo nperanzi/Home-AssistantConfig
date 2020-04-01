@@ -28,17 +28,6 @@ homeassistant:
 #                                                  #
 ####################################################
 
-#https://www.home-assistant.io/components/asuswrt/
-asuswrt:
-  host: !secret router_ip
-  username: !secret router_user
-  ssh_key: !secret router_keyfile
-  sensors:
-    - upload
-    - download
-    - upload_speed
-    - download_speed
-
 #https://home-assistant.io/components/config/
 config:
 
@@ -145,18 +134,16 @@ switch: !include switches.yaml
 
 ####################################################
 #                                                  #
-#                     CLIMATE                      #
+#                   AIRVISUAL                      #
 #                                                  #
 ####################################################
 
-#https://github.com/smartHomeHub/SmartIR/blob/master/docs/CLIMATE.md
-
-climate:
-  - platform: smartir
-    name: Bedroom AC
-    unique_id: bedroom_ac
-    device_code: 9999
-    controller_data: !secret broadlink_ip
+#https://www.home-assistant.io/components/sensor.airvisual/
+airvisual:
+  api_key: !secret airvisual_api
+  geographies:
+    latitude: !secret latitude
+    longitude: !secret longitude
 
 ####################################################
 #                                                  #
@@ -204,7 +191,7 @@ camera:
 remote:
   - platform: harmony
     name: Harmony Hub
-    host: 192.168.1.102
+    host: !secret harmony_ip
     activity: Kodi
 
 ####################################################
@@ -250,7 +237,7 @@ joaoapps_join:
 
 hue:
   bridges:
-    - host: 192.168.1.157
+    - host: !secret hue_ip
       allow_unreachable: true
       allow_hue_groups: true
 
@@ -268,16 +255,6 @@ lock:
 
 ####################################################
 #                                                  #
-#                     SMARTIR                      #
-#                                                  #
-####################################################
-
-#https://github.com/smartHomeHub/SmartIR
-
-smartir:
-
-####################################################
-#                                                  #
 #                SPEEDTESTDOTNET                   #
 #                                                  #
 ####################################################
@@ -291,6 +268,18 @@ speedtestdotnet:
     - ping
     - download
     - upload
+
+####################################################
+#                                                  #
+#                     SPOTIFY                      #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/components/spotify/
+
+spotify:
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret
 
 ####################################################
 #                                                  #

@@ -13,7 +13,6 @@ homeassistant:
 
 group:
   Robot Vacuum:
-    control: hidden
     entities:
       - vacuum.e200p8u2391901643307
       - input_boolean.disable_daily_vacuum

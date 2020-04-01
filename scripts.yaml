@@ -12,7 +12,7 @@ broadlink_autolearn:
   alias: broadlink_autolearn
   sequence:
   - data:
-      host: 192.168.1.122
+      host: !secret broadlink_ip
     service: broadlink.learn
 
 ####################################################

@@ -9,19 +9,7 @@
 #https://www.home-assistant.io/components/media_player.kodi/
 
 #  - platform: kodi
-#    host: 192.168.1.151
-
-####################################################
-#                                                  #
-#                     SPOTIFY                      #
-#                                                  #
-####################################################
-
-#https://www.home-assistant.io/components/spotify/
-
-  - platform: spotify
-    client_id: !secret spotify_id
-    client_secret: !secret spotify_secret
+#    host: !secret shield_ip
 
 ####################################################
 #                                                  #

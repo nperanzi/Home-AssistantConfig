@@ -2,22 +2,6 @@
 
 ####################################################
 #                                                  #
-#                   AIRVISUAL                      #
-#                                                  #
-####################################################
-
-#https://www.home-assistant.io/components/sensor.airvisual/
-  - platform: airvisual
-    api_key: !secret airvisual_api
-    monitored_conditions:
-      - us
-      - cn
-    show_on_map: false
-    latitude: !secret latitude
-    longitude: !secret longitude
-
-####################################################
-#                                                  #
 #                 COMMAND LINE                     #
 #                                                  #
 ####################################################
