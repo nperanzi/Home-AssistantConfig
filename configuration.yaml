@@ -94,6 +94,9 @@ logger:
 #https://www.home-assistant.io/components/map/
 map:
 
+#https://www.home-assistant.io/integrations/mobile_app/
+mobile_app:
+
 #https://home-assistant.io/components/recorder/
 recorder:
   purge_interval: 1
@@ -226,6 +229,17 @@ joaoapps_join:
   - name: Join_Android
     device_id: group.android
     api_key: !secret join_api
+
+####################################################
+#                                                  #
+#                     LOVELACE                     #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/lovelace/yaml-mode/
+
+lovelace:
+  mode: yaml
 
 ####################################################
 #                                                  #

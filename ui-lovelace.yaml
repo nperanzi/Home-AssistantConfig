@@ -1,0 +1,251 @@
+#https://www.home-assistant.io/lovelace/yaml-mode/
+
+####################################################
+#                                                  #
+#                     LOVELACE                     #
+#                                                  #
+####################################################
+
+title: Home
+views:
+  - badges: []
+    cards:
+      - elements:
+          - entity: climate.bedroom_ac
+            icon: 'mdi:air-conditioner'
+            style:
+              left: 26.5%
+              top: 15%
+            tap_action:
+              action: more-info
+            type: icon
+          - entity: group.nick
+            style:
+              font-size: 10px
+              left: 92%
+              top: 15%
+            type: state-badge
+          - entity: group.rachel
+            style:
+              font-size: 10px
+              left: 92%
+              top: 35%
+            type: state-badge
+          - entity: input_boolean.vacation
+            style:
+              font-size: 10px
+              left: 92%
+              top: 57%
+            type: state-badge
+          - entity: input_boolean.guest
+            style:
+              font-size: 10px
+              left: 92%
+              top: 79%
+            type: state-badge
+          - entity: sensor.ac_desc
+            style:
+              left: 26.25%
+              top: 21%
+            type: state-label
+          - entity: light.bedroomlamp
+            hold_action:
+              action: more-info
+            style:
+              left: 40%
+              top: 12%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: lock.peranzi
+            style:
+              left: 40%
+              top: 84%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: camera.front_door
+            hold_action:
+              action: toggle
+            icon: 'mdi:camera'
+            style:
+              left: 45%
+              top: 50%
+            tap_action:
+              action: more-info
+            type: icon
+          - entity: camera.living_room
+            hold_action:
+              action: toggle
+            icon: 'mdi:camera'
+            style:
+              left: 49%
+              top: 38%
+            tap_action:
+              action: more-info
+            type: icon
+          - entity: light.lamppost
+            hold_action:
+              action: more-info
+            style:
+              left: 78%
+              top: 59.5%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: light.side_light
+            hold_action:
+              action: more-info
+            style:
+              left: 81%
+              top: 30%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: switch.apartment_buzzer
+            icon: 'mdi:door'
+            style:
+              left: 20%
+              top: 90%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: vacuum.e200p8u2391901643307
+            icon: 'mdi:robot-vacuum'
+            style:
+              left: 60%
+              top: 70%
+            tap_action:
+              action: toggle
+            type: state-icon
+          - entity: input_boolean.disable_daily_vacuum
+            style:
+              left: 57%
+              top: 77%
+            type: state-icon
+          - entity: input_boolean.disable_dustbin_notification
+            style:
+              left: 63%
+              top: 77%
+            type: state-icon
+        image: /local/images/floorplan/floorplan.png
+        type: picture-elements
+      - entities:
+          - sensor.dark_sky_summary
+          - sensor.dark_sky_hourly_summary
+          - sensor.dark_sky_temperature
+          - sensor.dark_sky_apparent_temperature
+          - sensor.dark_sky_wind_speed
+          - sensor.dark_sky_humidity
+          - sensor.dark_sky_uv_index
+          - sun.sun
+          - sensor.dark_sky_visibility
+          - sensor.dark_sky_daily_summary
+        show_header_toggle: false
+        title: Weather Summary
+        type: entities
+      - entity: climate.bedroom_ac
+        name: AC Control
+        theme: default
+        type: thermostat
+    icon: 'mdi:home'
+    panel: false
+    path: home
+    title: Home
+  - badges: []
+    cards:
+      - entity: camera.front_door
+        type: picture-entity
+      - entities:
+          - entity: switch.foscam_view
+          - entity: switch.foscam_motion
+          - entity: switch.foscam2_view
+          - entity: switch.foscam2_motion
+        show_header_toggle: false
+        title: Camera Controls
+        type: entities
+      - entity: camera.living_room
+        type: picture-entity
+    icon: 'mdi:cctv'
+    path: cameras
+    title: Cameras
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.processor_use
+          - entity: sensor.disk_use_percent_home
+          - entity: sensor.memory_use_percent
+          - entity: sensor.last_boot
+          - entity: sensor.cpu
+          - entity: sensor.cpu_temperature
+          - entity: sensor.load_1m
+          - entity: sensor.load_5m
+          - entity: sensor.load_15m
+          - entity: sensor.ha_uptime
+        show_header_toggle: false
+        title: Server Monitor
+        type: entities
+      - entities:
+          - entity: sensor.installed_version
+          - entity: sensor.latest_version
+        show_header_toggle: false
+        title: HA Version Info
+        type: entities
+      - entities:
+          - entity: sensor.fast_com_download
+          - entity: sensor.speedtest_download
+          - entity: sensor.speedtest_upload
+          - entity: sensor.speedtest_ping
+        show_header_toggle: false
+        title: Network Monitor
+        type: entities
+    icon: 'mdi:home-automation'
+    path: system
+    title: System
+  - badges: []
+    cards:
+      - entities:
+          - entity: automation.set_foscam_to_away_mode_when_no_one_is_home
+          - entity: automation.set_foscam_to_home_mode_when_someone_is_home
+          - entity: automation.lock_front_door_at_830pm
+          - entity: automation.lock_front_door_at_night
+          - entity: automation.lock_front_door_after_we_leave
+          - entity: automation.turn_on_lights_when_we_come_home
+        show_header_toggle: false
+        title: Security
+        type: entities
+      - entities:
+          - entity: automation.home_assistant_update_notifier
+          - entity: automation.front_door_open_notifications
+          - entity: automation.front_door_unlocked_notifications
+          - entity: automation.rachel_workday_weather_details
+        show_header_toggle: false
+        title: Notifications
+        type: entities
+      - entities:
+          - entity: script.foscam_off
+          - entity: script.foscam_on
+          - entity: script.weather_briefing
+          - entity: script.weather_briefing_wife
+        show_header_toggle: false
+        title: Scripts
+        type: entities
+      - entities:
+          - entity: input_boolean.disable_daily_vacuum
+          - entity: input_boolean.disable_dustbin_notification
+          - entity: input_boolean.daily_vacuum_first_run
+          - entity: sensor.ecovacs_vacuum_cleaner_status
+          - entity: automation.reset_daily_vacuum_first_run_state_at_midnight
+          - entity: automation.send_alert_after_daily_vacuum_to_empty_the_dustbin
+          - entity: automation.start_daily_vacuum
+        show_header_toggle: false
+        title: Vacuum
+        type: entities
+    path: automations
+    title: Automations
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################
