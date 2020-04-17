@@ -11,14 +11,14 @@ views:
   - badges: []
     cards:
       - elements:
-          - entity: climate.bedroom_ac
-            icon: 'mdi:air-conditioner'
-            style:
-              left: 26.5%
-              top: 15%
-            tap_action:
-              action: more-info
-            type: icon
+#          - entity: climate.bedroom_ac
+#            icon: 'mdi:air-conditioner'
+#            style:
+#              left: 26.5%
+#              top: 15%
+#            tap_action:
+#              action: more-info
+#            type: icon
           - entity: group.nick
             style:
               font-size: 10px
@@ -43,11 +43,11 @@ views:
               left: 92%
               top: 79%
             type: state-badge
-          - entity: sensor.ac_desc
-            style:
-              left: 26.25%
-              top: 21%
-            type: state-label
+#          - entity: sensor.ac_desc
+#            style:
+#              left: 26.25%
+#              top: 21%
+#            type: state-label
           - entity: light.bedroomlamp
             hold_action:
               action: more-info
@@ -109,7 +109,7 @@ views:
               top: 90%
             tap_action:
               action: toggle
-            type: state-icon
+            type: icon
           - entity: vacuum.e200p8u2391901643307
             icon: 'mdi:robot-vacuum'
             style:
@@ -144,10 +144,10 @@ views:
         show_header_toggle: false
         title: Weather Summary
         type: entities
-      - entity: climate.bedroom_ac
-        name: AC Control
-        theme: default
-        type: thermostat
+#      - entity: climate.bedroom_ac
+#        name: AC Control
+#        theme: default
+#        type: thermostat
     icon: 'mdi:home'
     panel: false
     path: home
@@ -198,6 +198,17 @@ views:
           - entity: sensor.speedtest_ping
         show_header_toggle: false
         title: Network Monitor
+        type: entities
+      - entities:
+          - entity: switch.adguard_filtering
+          - entity: switch.adguard_safe_browsing
+          - entity: switch.adguard_safe_search
+          - entity: switch.adguard_parental_control
+          - entity: sensor.adguard_dns_queries
+          - entity: sensor.adguard_dns_queries_blocked_ratio
+          - entity: sensor.adguard_average_processing_speed
+        show_header_toggle: false
+        title: AdGuard Home
         type: entities
     icon: 'mdi:home-automation'
     path: system
