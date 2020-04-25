@@ -57,7 +57,8 @@ views:
             tap_action:
               action: toggle
             type: state-icon
-          - entity: lock.peranzi
+          - entity: lock.august_smart_lock
+            state_color: false
             style:
               left: 40%
               top: 84%

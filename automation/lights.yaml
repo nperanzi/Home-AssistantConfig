@@ -12,7 +12,7 @@
     action:
       - service: light.turn_on
         data:
-          entity_id: light.stairs_bottom_1
+          entity_id: light.side_light
           brightness_pct: 100
 
 ####################################################

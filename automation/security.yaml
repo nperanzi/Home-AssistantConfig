@@ -18,7 +18,7 @@
       before: '05:30:00'
     action:
       service: lock.lock
-      entity_id: lock.peranzi
+      entity_id: lock.august_smart_lock
 
 ####################################################
 #                                                  #
@@ -32,7 +32,7 @@
       at: '20:30:00'
     action:
       service: lock.lock
-      entity_id: lock.peranzi
+      entity_id: lock.august_smart_lock
 
 ####################################################
 #                                                  #
@@ -54,7 +54,7 @@
       state: 'unlocked'
     action:
       service: lock.lock
-      entity_id: lock.peranzi
+      entity_id: lock.august_smart_lock
 
 ####################################################
 #                                                  #
@@ -64,7 +64,7 @@
 
   - alias: 'Front door open notifications'
     trigger:
-    - entity_id: binary_sensor.ecolink_doorwindow_sensor_sensor
+    - entity_id: binary_sensor.ecolink_door_window_sensor_sensor
       from: 'off'
       platform: state
       to: 'on'
@@ -83,7 +83,7 @@
 
   - alias: 'Front door unlocked notifications'
     trigger:
-    - entity_id: lock.peranzi
+    - entity_id: lock.august_smart_lock
       from: 'locked'
       platform: state
       to: 'unlocked'
