@@ -167,21 +167,21 @@ fastdotcom:
 
 #https://www.home-assistant.io/components/camera.foscam/
 
-camera:
-  - platform: foscam
-    ip: !secret foscam_ip
-    port: !secret foscam_port
-    username: !secret foscam_user
-    password: !secret foscam_pass
-    rtsp_port: !secret foscam_port
-    name: Front Door
-  - platform: foscam
-    ip: !secret foscam_ip_2
-    port: !secret foscam_port
-    username: !secret foscam_user
-    password: !secret foscam_pass
-    rtsp_port: !secret foscam_port
-    name: Living Room
+#camera:
+#  - platform: foscam
+#    ip: !secret foscam_ip
+#    port: !secret foscam_port
+#    username: !secret foscam_user
+#    password: !secret foscam_pass
+#    rtsp_port: !secret foscam_port
+#    name: Front Door
+#  - platform: foscam
+#    ip: !secret foscam_ip_2
+#    port: !secret foscam_port
+#    username: !secret foscam_user
+#    password: !secret foscam_pass
+#    rtsp_port: !secret foscam_port
+#    name: Living Room
 
 ####################################################
 #                                                  #
@@ -207,15 +207,6 @@ remote:
 
 iqvia:
   zip_code: !secret zipcode
-  monitored_conditions:
-    - allergy_average_forecasted
-    - allergy_index_today
-    - allergy_index_tomorrow
-    - asthma_average_forecasted
-    - asthma_index_today
-    - asthma_index_tomorrow
-    - disease_average_forecasted
-    - disease_index_today
 
 ####################################################
 #                                                  #
@@ -263,9 +254,9 @@ hue:
 
 #https://www.home-assistant.io/components/lock.sesame/
 
-lock:
-  - platform: sesame
-    api_key: !secret sesame_api
+#lock:
+#  - platform: sesame
+#    api_key: !secret sesame_api
 
 ####################################################
 #                                                  #
@@ -322,3 +313,4 @@ zwave:
 #            END OF CONFIGURATION FILE             #
 #                                                  #
 ####################################################
+

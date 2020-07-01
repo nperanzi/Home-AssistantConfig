@@ -28,6 +28,9 @@ foscam_off:
   - service: switch.turn_off
     data:
       entity_id: switch.foscam_motion
+  - service: switch.turn_off
+    data:
+      entity_id: switch.foscam2_motion
   - service: shell_command.foscam_turn_off
   - service: shell_command.foscam2_turn_off
   - service: notify.join
@@ -38,12 +41,18 @@ foscam_on:
   - service: switch.turn_off
     data:
       entity_id: switch.foscam_motion
+  - service: switch.turn_off
+    data:
+      entity_id: switch.foscam2_motion
   - service: shell_command.foscam_turn_on
   - service: shell_command.foscam2_turn_on
   - delay: '00:00:20'
   - service: switch.turn_on
     data:
       entity_id: switch.foscam_motion
+  - service: switch.turn_on
+    data:
+      entity_id: switch.foscam2_motion
   - service: notify.join
     data:
       message: Security cameras enabled
