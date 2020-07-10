@@ -1,0 +1,117 @@
+###############################################################################
+#   @author         :   Nick Peranzi
+#   @date           :   2020-07-05
+#   @package        :   SmartIR HVAC Control
+#   @description    :   Controls multiple Mitsubishi MSZ-FH12NA units
+###############################################################################
+
+#https://github.com/smartHomeHub/SmartIR
+smartir:
+
+climate:
+  - platform: smartir
+    name: Living Room HVAC
+    unique_id: living_room_hvac
+    device_code: 1127
+    controller_data: !secret broadlink_ip4
+
+  - platform: smartir
+    name: Kitchen HVAC
+    unique_id: kitchen_hvac
+    device_code: 1127
+    controller_data: !secret broadlink_ip2
+  
+  - platform: smartir
+    name: Bedroom HVAC
+    unique_id: bedroom_hvac
+    device_code: 1127
+    controller_data: !secret broadlink_ip3
+
+  - platform: smartir
+    name: Nursery HVAC
+    unique_id: nursery_hvac
+    device_code: 1127
+    controller_data: !secret broadlink_ip
+
+sensor:
+  - platform: template
+    sensors:
+      living_room_hvac_temp:
+        friendly_name: Living Room HVAC Temperature
+        unit_of_measurement: 'Fahrenheit'
+        value_template: '{{ states.climate.living_room_hvac.attributes.temperature }}'
+
+      living_room_hvac_desc:
+        friendly_name: Living Room HVAC Status
+        value_template: >
+          {% macro sentence_case(text) %}
+            {{ text[0]|upper}}{{text[1:] }}
+          {% endmacro %}
+          
+          {% set text = sentence_case(states('climate.living_room_hvac')) %}
+
+          {% if states('climate.living_room_hvac') != 'off' %}
+            {% set text = text + ' @ ' + states('sensor.living_room_hvac_temp') + 'F' %}
+          {% endif %}
+
+          {{ text }}
+
+      kitchen_hvac_temp:
+        friendly_name: Kitchen HVAC Temperature
+        unit_of_measurement: 'Fahrenheit'
+        value_template: '{{ states.climate.kitchen_hvac.attributes.temperature }}'
+
+      kitchen_hvac_desc:
+        friendly_name: Kitchen HVAC Status
+        value_template: >
+          {% macro sentence_case(text) %}
+            {{ text[0]|upper}}{{text[1:] }}
+          {% endmacro %}
+          
+          {% set text = sentence_case(states('climate.kitchen_hvac')) %}
+
+          {% if states('climate.kitchen_hvac') != 'off' %}
+            {% set text = text + ' @ ' + states('sensor.kitchen_hvac_temp') + 'F' %}
+          {% endif %}
+
+          {{ text }}
+
+      bedroom_hvac_temp:
+        friendly_name: Bedroom HVAC Temperature
+        unit_of_measurement: 'Fahrenheit'
+        value_template: '{{ states.climate.bedroom_hvac.attributes.temperature }}'
+
+      bedroom_hvac_desc:
+        friendly_name: Bedroom HVAC Status
+        value_template: >
+          {% macro sentence_case(text) %}
+            {{ text[0]|upper}}{{text[1:] }}
+          {% endmacro %}
+          
+          {% set text = sentence_case(states('climate.bedroom_hvac')) %}
+
+          {% if states('climate.bedroom_hvac') != 'off' %}
+            {% set text = text + ' @ ' + states('sensor.bedroom_hvac_temp') + 'F' %}
+          {% endif %}
+
+          {{ text }}
+
+      nursery_hvac_temp:
+        friendly_name: Nursery HVAC Temperature
+        unit_of_measurement: 'Fahrenheit'
+        value_template: '{{ states.climate.nursery_hvac.attributes.temperature }}'
+
+      nursery_hvac_desc:
+        friendly_name: Nursery HVAC Status
+        value_template: >
+          {% macro sentence_case(text) %}
+            {{ text[0]|upper}}{{text[1:] }}
+          {% endmacro %}
+          
+          {% set text = sentence_case(states('climate.nursery_hvac')) %}
+
+          {% if states('climate.nursery_hvac') != 'off' %}
+            {% set text = text + ' @ ' + states('sensor.nursery_hvac_temp') + 'F' %}
+          {% endif %}
+
+          {{ text }}

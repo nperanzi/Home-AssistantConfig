@@ -36,7 +36,7 @@ conversation:
 
 #https://www.home-assistant.io/components/discovery/
 #Disabled for now
-#discovery:
+discovery:
 
 #https://www.home-assistant.io/components/frontend/
 frontend:
@@ -158,44 +158,6 @@ airvisual:
 fastdotcom:
   scan_interval:
       minutes: 30
-
-####################################################
-#                                                  #
-#                  FOSCAM CAMERA                   #
-#                                                  #
-####################################################
-
-#https://www.home-assistant.io/components/camera.foscam/
-
-#camera:
-#  - platform: foscam
-#    ip: !secret foscam_ip
-#    port: !secret foscam_port
-#    username: !secret foscam_user
-#    password: !secret foscam_pass
-#    rtsp_port: !secret foscam_port
-#    name: Front Door
-#  - platform: foscam
-#    ip: !secret foscam_ip_2
-#    port: !secret foscam_port
-#    username: !secret foscam_user
-#    password: !secret foscam_pass
-#    rtsp_port: !secret foscam_port
-#    name: Living Room
-
-####################################################
-#                                                  #
-#                HARMONY HUB REMOTE                #
-#                                                  #
-####################################################
-
-#https://www.home-assistant.io/components/remote.harmony/
-
-remote:
-  - platform: harmony
-    name: Harmony Hub
-    host: !secret harmony_ip
-    activity: Kodi
 
 ####################################################
 #                                                  #

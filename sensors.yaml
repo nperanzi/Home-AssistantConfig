@@ -198,26 +198,6 @@
 
           {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%H:%M on %a') }} {{ date }} {{ as_timestamp(states('sensor.last_boot')) | timestamp_custom('%b %Y') }}
 
-      ac_temp:
-        friendly_name: AC Temperature
-        unit_of_measurement: 'Fahrenheit'
-        value_template: '{{ states.climate.bedroom_ac.attributes.temperature }}'
-
-      ac_desc:
-        friendly_name: AC Status
-        value_template: >
-          {% macro sentence_case(text) %}
-            {{ text[0]|upper}}{{text[1:] }}
-          {% endmacro %}
-          
-          {% set text = sentence_case(states('climate.bedroom_ac')) %}
-
-          {% if states('climate.bedroom_ac') != 'off' %}
-            {% set text = text + ' @ ' + states('sensor.ac_temp') + 'F' %}
-          {% endif %}
-
-          {{ text }}
-
 ####################################################
 #                                                  #
 #                     TIME/DATE                    #

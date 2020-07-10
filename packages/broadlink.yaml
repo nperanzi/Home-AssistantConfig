@@ -1,0 +1,75 @@
+###############################################################################
+#   @author         :   Nick Peranzi
+#   @date           :   2020-07-05
+#   @package        :   Broadlink Remotes
+#   @description    :   Set up broadlink units as remotes and humidity/temperature sensors
+###############################################################################
+
+# https://www.home-assistant.io/integrations/broadlink
+remote:
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    type: rm_pro_phicomm
+    name: Broadlink - Nursery
+
+  - platform: broadlink
+    host: !secret broadlink_ip2
+    mac: !secret broadlink_mac2
+    type: rm4_mini
+    name: Broadlink - Kitchen
+
+  - platform: broadlink
+    host: !secret broadlink_ip3
+    mac: !secret broadlink_mac3
+    type: rm4_mini
+    name: Broadlink - Bedroom
+
+  - platform: broadlink
+    host: !secret broadlink_ip4
+    mac: !secret broadlink_mac4
+    type: rm4_mini
+    name: Broadlink - Living Room
+
+sensor:
+  - platform: broadlink
+    host: !secret broadlink_ip2
+    mac: !secret broadlink_mac2
+    monitored_conditions:
+      - 'temperature'
+      - 'humidity'
+
+  - platform: broadlink
+    host: !secret broadlink_ip3
+    mac: !secret broadlink_mac3
+    monitored_conditions:
+      - 'temperature'
+      - 'humidity'
+
+  - platform: broadlink
+    host: !secret broadlink_ip4
+    mac: !secret broadlink_mac4
+    monitored_conditions:
+      - 'temperature'
+      - 'humidity'
+
+switch:
+  - platform: broadlink
+    host: !secret broadlink_ip
+    mac: !secret broadlink_mac
+    type: rm_pro_phicomm
+
+  - platform: broadlink
+    host: !secret broadlink_ip2
+    mac: !secret broadlink_mac2
+    type: rm4_mini
+
+  - platform: broadlink
+    host: !secret broadlink_ip3
+    mac: !secret broadlink_mac3
+    type: rm4_mini
+
+  - platform: broadlink
+    host: !secret broadlink_ip4
+    mac: !secret broadlink_mac4
+    type: rm4_mini

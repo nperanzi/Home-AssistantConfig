@@ -4,16 +4,16 @@
 #                                                  #
 ####################################################
 
-  - alias: Turn on lights when we come home
-    trigger:
-      platform: state
-      entity_id: group.family
-      to: 'home'
-    action:
-      - service: light.turn_on
-        data:
-          entity_id: light.side_light
-          brightness_pct: 100
+#  - alias: Turn on lights when we come home
+#    trigger:
+#      platform: state
+#      entity_id: group.family
+#      to: 'home'
+#    action:
+#      - service: light.turn_on
+#        data:
+#          entity_id: light.side_light
+#          brightness_pct: 100
 
 ####################################################
 #                                                  #

@@ -11,165 +11,174 @@ views:
   - badges: []
     cards:
       - elements:
-#          - entity: climate.bedroom_ac
-#            icon: 'mdi:air-conditioner'
-#            style:
-#              left: 26.5%
-#              top: 15%
-#            tap_action:
-#              action: more-info
-#            type: icon
+          # 3D Printer
+          - entity: switch.3d_printer
+            style:
+              font-size: 10px
+              left: 72.5%
+              top: 27.5%
+            type: state-icon
+          - entity: light.side_light
+            style:
+              font-size: 10px
+              left: 75.5%
+              top: 27.5%
+            type: state-icon
+          # Air Purifier
+          - entity: fan.living_room_air_purifier
+            style:
+              font-size: 10px
+              left: 30%
+              top: 67.5%
+            type: state-icon
+          # Badges across top row
           - entity: group.nick
             style:
               font-size: 10px
-              left: 92%
-              top: 15%
+              left: 20%
+              top: 10%
             type: state-badge
           - entity: group.rachel
             style:
               font-size: 10px
-              left: 92%
-              top: 35%
+              left: 40%
+              top: 10%
             type: state-badge
           - entity: input_boolean.vacation
             style:
               font-size: 10px
-              left: 92%
-              top: 57%
+              left: 60%
+              top: 10%
             type: state-badge
           - entity: input_boolean.guest
             style:
               font-size: 10px
-              left: 92%
-              top: 79%
-            type: state-badge
-#          - entity: sensor.ac_desc
-#            style:
-#              left: 26.25%
-#              top: 21%
-#            type: state-label
+              left: 80%
+              top: 10%
+            type: state-badge  
+          # Brother printer
+          - entity: sensor.dcp_l2550dw_status
+            style:
+              left: 21%
+              top: 27.5%
+            type: state-icon
+            tap_action:
+              action: more-info 
+          # Climate Controls        
+          - entity: climate.living_room_hvac
+            icon: 'mdi:air-conditioner'
+            style:
+              left: 21%
+              top: 47.5%
+            tap_action:
+              action: more-info
+            type: icon
+          - entity: sensor.living_room_hvac_desc
+            style:
+              left: 21%
+              top: 52.5%
+            type: state-label
+          - entity: climate.kitchen_hvac
+            icon: 'mdi:air-conditioner'
+            style:
+              left: 43.5%
+              top: 70%
+            tap_action:
+              action: more-info
+            type: icon
+          - entity: sensor.kitchen_hvac_desc
+            style:
+              left: 43.5%
+              top: 75%
+            type: state-label
+          - entity: climate.nursery_hvac
+            icon: 'mdi:air-conditioner'
+            style:
+              left: 67.5%
+              top: 35%
+            tap_action:
+              action: more-info
+            type: icon
+          - entity: sensor.nursery_hvac_desc
+            style:
+              left: 67.5%
+              top: 40%
+            type: state-label
+          - entity: climate.bedroom_hvac
+            icon: 'mdi:air-conditioner'
+            style:
+              left: 87.5%
+              top: 62.5%
+            tap_action:
+              action: more-info
+            type: icon
+          - entity: sensor.bedroom_hvac_desc
+            style:
+              left: 87.5%
+              top: 67.5%
+            type: state-label
+          # Lights
           - entity: light.bedroomlamp
             hold_action:
               action: more-info
             style:
-              left: 40%
-              top: 12%
+              left: 92.5%
+              top: 75%
             tap_action:
               action: toggle
             type: state-icon
+          # Lock
           - entity: lock.august_smart_lock
             state_color: false
             style:
-              left: 40%
-              top: 84%
-            tap_action:
-              action: toggle
-            type: state-icon
-          - entity: camera.front_door
-            hold_action:
-              action: toggle
-            icon: 'mdi:camera'
-            style:
               left: 45%
-              top: 50%
-            tap_action:
-              action: more-info
-            type: icon
-          - entity: camera.living_room
-            hold_action:
-              action: toggle
-            icon: 'mdi:camera'
-            style:
-              left: 49%
-              top: 38%
-            tap_action:
-              action: more-info
-            type: icon
-          - entity: light.lamppost
-            hold_action:
-              action: more-info
-            style:
-              left: 78%
-              top: 59.5%
+              top: 44%
             tap_action:
               action: toggle
             type: state-icon
-          - entity: light.side_light
-            hold_action:
-              action: more-info
-            style:
-              left: 81%
-              top: 30%
-            tap_action:
-              action: toggle
-            type: state-icon
-          - entity: switch.apartment_buzzer
-            icon: 'mdi:door'
-            style:
-              left: 20%
-              top: 90%
-            tap_action:
-              action: toggle
-            type: icon
+          # Vacuum
           - entity: vacuum.e200p8u2391901643307
             icon: 'mdi:robot-vacuum'
             style:
-              left: 60%
-              top: 70%
+              left: 12.5%
+              top: 67.5%
             tap_action:
               action: toggle
             type: state-icon
-          - entity: input_boolean.disable_daily_vacuum
-            style:
-              left: 57%
-              top: 77%
-            type: state-icon
-          - entity: input_boolean.disable_dustbin_notification
-            style:
-              left: 63%
-              top: 77%
-            type: state-icon
-        image: /local/images/floorplan/floorplan.png
+        image: /local/images/floorplan/home2020.png
         type: picture-elements
-      - entities:
-          - sensor.dark_sky_summary
-          - sensor.dark_sky_hourly_summary
-          - sensor.dark_sky_temperature
-          - sensor.dark_sky_apparent_temperature
-          - sensor.dark_sky_wind_speed
-          - sensor.dark_sky_humidity
-          - sensor.dark_sky_uv_index
-          - sun.sun
-          - sensor.dark_sky_visibility
-          - sensor.dark_sky_daily_summary
-        show_header_toggle: false
-        title: Weather Summary
-        type: entities
-#      - entity: climate.bedroom_ac
+#      - type: weather-forecast
+#        entity: weather.kbos_daynight
+#      - entities:
+#          - sensor.dark_sky_summary
+#          - sensor.dark_sky_hourly_summary
+#          - sensor.dark_sky_temperature
+#          - sensor.dark_sky_apparent_temperature
+#          - sensor.dark_sky_wind_speed
+#          - sensor.dark_sky_humidity
+#          - sensor.dark_sky_uv_index
+#          - sun.sun
+#          - sensor.dark_sky_visibility
+#          - sensor.dark_sky_daily_summary
+#        show_header_toggle: false
+#        title: Weather Summary
+#        type: entities
+#      - entity: climate.living_room_hvac
 #        name: AC Control
 #        theme: default
 #        type: thermostat
     icon: 'mdi:home'
-    panel: false
+    panel: true
     path: home
     title: Home
-  - badges: []
+  - title: Weather
+    path: weather
+    panel: false
+    icon: 'mdi:weather-cloudy'
+    badges: []
     cards:
-      - entity: camera.front_door
-        type: picture-entity
-      - entities:
-          - entity: switch.foscam_view
-          - entity: switch.foscam_motion
-          - entity: switch.foscam2_view
-          - entity: switch.foscam2_motion
-        show_header_toggle: false
-        title: Camera Controls
-        type: entities
-      - entity: camera.living_room
-        type: picture-entity
-    icon: 'mdi:cctv'
-    path: cameras
-    title: Cameras
+      - type: weather-forecast
+        entity: weather.kbos_daynight
   - badges: []
     cards:
       - entities:

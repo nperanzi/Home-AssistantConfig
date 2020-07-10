@@ -1,0 +1,10 @@
+###############################################################################
+#   @author         :   Nick Peranzi
+#   @date           :   2020-07-10
+#   @package        :   Vesync
+#   @description    :   Vesync Integration for LV-PUR131S
+###############################################################################
+
+vesync:
+  username: !secret vesync_username
+  password: !secret vesync_password
