@@ -8,12 +8,12 @@
 
 #https://github.com/unclehook/BroadlinkIRTools
 
-broadlink_autolearn:
-  alias: broadlink_autolearn
-  sequence:
-  - data:
-      host: !secret broadlink_ip
-    service: broadlink.learn
+#broadlink_autolearn:
+#  alias: broadlink_autolearn
+#  sequence:
+#  - data:
+#      host: !secret broadlink_ip
+#    service: broadlink.learn
 
 ####################################################
 #                                                  #
