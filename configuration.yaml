@@ -193,6 +193,30 @@ joaoapps_join:
 
 lovelace:
   mode: yaml
+  resources:
+    - url: /local/xiaomi-vacuum-card.js?v=4.0.0
+      type: module
+    - url: /local/fan-card.js?v=1.0.0
+      type: module
+  dashboards:
+    lovelace-desktop: 
+      mode: yaml
+      filename: ui-desktop.yaml
+      title: Desktop
+      icon: mdi:monitor
+      show_in_sidebar: true
+      require_admin: false 
+    lovelace-mobile: 
+      mode: yaml
+      filename: ui-mobile.yaml
+      title: Mobile
+      icon: mdi:cellphone-android
+      show_in_sidebar: true
+      require_admin: false 
+    
+
+
+
 
 ####################################################
 #                                                  #

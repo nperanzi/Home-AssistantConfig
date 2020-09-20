@@ -65,58 +65,58 @@ views:
             tap_action:
               action: more-info 
           # Climate Controls        
-          - entity: climate.living_room_hvac
-            icon: 'mdi:air-conditioner'
-            style:
-              left: 21%
-              top: 47.5%
-            tap_action:
-              action: more-info
-            type: icon
-          - entity: sensor.living_room_hvac_desc
-            style:
-              left: 21%
-              top: 52.5%
-            type: state-label
-          - entity: climate.kitchen_hvac
-            icon: 'mdi:air-conditioner'
-            style:
-              left: 43.5%
-              top: 70%
-            tap_action:
-              action: more-info
-            type: icon
-          - entity: sensor.kitchen_hvac_desc
-            style:
-              left: 43.5%
-              top: 75%
-            type: state-label
-          - entity: climate.nursery_hvac
-            icon: 'mdi:air-conditioner'
-            style:
-              left: 67.5%
-              top: 35%
-            tap_action:
-              action: more-info
-            type: icon
-          - entity: sensor.nursery_hvac_desc
-            style:
-              left: 67.5%
-              top: 40%
-            type: state-label
-          - entity: climate.bedroom_hvac
-            icon: 'mdi:air-conditioner'
-            style:
-              left: 87.5%
-              top: 62.5%
-            tap_action:
-              action: more-info
-            type: icon
-          - entity: sensor.bedroom_hvac_desc
-            style:
-              left: 87.5%
-              top: 67.5%
-            type: state-label
+          #- entity: climate.living_room_hvac
+          #  icon: 'mdi:air-conditioner'
+          #  style:
+          #    left: 21%
+          #    top: 47.5%
+          #  tap_action:
+          #    action: more-info
+          #  type: icon
+          #- entity: sensor.living_room_hvac_desc
+          #  style:
+          #    left: 21%
+          #    top: 52.5%
+          #  type: state-label
+          #- entity: climate.kitchen_hvac
+          #  icon: 'mdi:air-conditioner'
+          #  style:
+          #    left: 43.5%
+          #    top: 70%
+          #  tap_action:
+          #    action: more-info
+          #  type: icon
+          #- entity: sensor.kitchen_hvac_desc
+          #  style:
+          #    left: 43.5%
+          #    top: 75%
+          #  type: state-label
+          #- entity: climate.nursery_hvac
+          #  icon: 'mdi:air-conditioner'
+          #  style:
+          #    left: 67.5%
+          #    top: 35%
+          #  tap_action:
+          #    action: more-info
+          #  type: icon
+          #- entity: sensor.nursery_hvac_desc
+          #  style:
+          #    left: 67.5%
+          #    top: 40%
+          #  type: state-label
+          #- entity: climate.bedroom_hvac
+          #  icon: 'mdi:air-conditioner'
+          #  style:
+          #    left: 87.5%
+          #    top: 62.5%
+          #  tap_action:
+          #    action: more-info
+          #  type: icon
+          #- entity: sensor.bedroom_hvac_desc
+          #  style:
+          #    left: 87.5%
+          #    top: 67.5%
+          #  type: state-label
           # Lights
           - entity: light.bedroomlamp
             hold_action:
@@ -145,7 +145,7 @@ views:
             tap_action:
               action: toggle
             type: state-icon
-        image: /local/images/floorplan/home2020.png
+        image: /local/images/floorplan/home2020-v02.png
         type: picture-elements
 #      - type: weather-forecast
 #        entity: weather.kbos_daynight

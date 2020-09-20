@@ -1,0 +1,72 @@
+#https://www.home-assistant.io/lovelace/yaml-mode/
+
+####################################################
+#                                                  #
+#                     LOVELACE                     #
+#                                                  #
+####################################################
+
+title: Mobile
+views:
+  - title: Rooms
+    badges: []
+    cards:
+      - type: vertical-stack
+        title: Living Room
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: light
+                entity: light.bedroomlamp
+                name: Sitting Area
+              - type: light
+                entity: light.bedroomlamp
+                name: Office Area
+              - type: light
+                entity: light.bedroomlamp
+                name: Hallway
+          - type: thermostat
+            entity: climate.living_room_hvac
+          - type: 'custom:xiaomi-vacuum-card'
+            entity: vacuum.e200p8u2391901643307
+            name: Bird Legs
+            vendor: ecovacs
+          - type: media-control
+            entity: media_player.shield_2
+      - type: vertical-stack
+        title: Bedroom
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: light
+                entity: light.bedroomlamp
+                name: Overhead
+              - type: light
+                entity: light.side_light
+          - type: thermostat
+            entity: climate.bedroom_hvac
+          - type: media-control
+            entity: media_player.shield
+      - type: vertical-stack
+        title: Nursery
+        cards:
+          - type: light
+            entity: light.bedroomlamp
+            name: Overhead
+          - type: thermostat
+            entity: climate.nursery_hvac
+      - type: vertical-stack
+        title: Kitchen
+        cards:
+          - type: light
+            entity: light.bedroomlamp
+            name: Overhead
+          - type: thermostat
+            entity: climate.kitchen_hvac
+
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################
