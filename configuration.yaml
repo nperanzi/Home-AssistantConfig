@@ -196,7 +196,7 @@ lovelace:
   resources:
     - url: /local/xiaomi-vacuum-card.js?v=4.0.0
       type: module
-    - url: /local/fan-card.js?v=1.0.0
+    - url: /local/fan-card.js?v=1.0.1
       type: module
   dashboards:
     lovelace-desktop: 
@@ -214,10 +214,6 @@ lovelace:
       show_in_sidebar: true
       require_admin: false 
     
-
-
-
-
 ####################################################
 #                                                  #
 #                   PHILIPS HUE                    #

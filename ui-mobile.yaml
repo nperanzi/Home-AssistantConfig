@@ -11,6 +11,12 @@ views:
   - title: Rooms
     badges: []
     cards:
+      - type: button
+        tap_action:
+          action: toggle
+        entity: lock.august_smart_lock
+        name: Front Door
+        show_state: true
       - type: vertical-stack
         title: Living Room
         cards:
@@ -43,6 +49,9 @@ views:
                 name: Overhead
               - type: light
                 entity: light.side_light
+          - type: 'custom:custom-fan-card'
+            entity: fan.bedroom_fan
+            name: Bedroom Fan
           - type: thermostat
             entity: climate.bedroom_hvac
           - type: media-control
