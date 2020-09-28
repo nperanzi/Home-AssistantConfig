@@ -12,26 +12,33 @@ climate:
   - platform: smartir
     name: Living Room HVAC
     unique_id: living_room_hvac
-    device_code: 1127
-    controller_data: !secret broadlink_ip4
+    device_code: 1129
+    controller_data: remote.broadlink_living_room_remote
+    temperature_sensor: sensor.broadlink_living_room_temperature
+    humidity_sensor: sensor.broadlink_living_room_humidity
 
   - platform: smartir
     name: Kitchen HVAC
     unique_id: kitchen_hvac
-    device_code: 1127
-    controller_data: !secret broadlink_ip2
+    device_code: 1129
+    controller_data: remote.broadlink_kitchen_remote
+    temperature_sensor: sensor.broadlink_kitchen_temperature
+    humidity_sensor: sensor.broadlink_kitchen_humidity
   
   - platform: smartir
     name: Bedroom HVAC
     unique_id: bedroom_hvac
-    device_code: 1127
-    controller_data: !secret broadlink_ip3
+    device_code: 1129
+    controller_data: remote.broadlink_bedroom_remote
+    temperature_sensor: sensor.broadlink_bedroom_temperature
+    humidity_sensor: sensor.broadlink_bedroom_humidity
 
   - platform: smartir
     name: Nursery HVAC
     unique_id: nursery_hvac
-    device_code: 1127
-    controller_data: !secret broadlink_ip
+    device_code: 1129
+    controller_data: remote.broadlink_nursery_remote
+    temperature_sensor: sensor.nursery_hvac_temp
 
 sensor:
   - platform: template
