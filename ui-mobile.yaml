@@ -23,14 +23,17 @@ views:
           - type: horizontal-stack
             cards:
               - type: light
-                entity: light.bedroomlamp
+                entity: light.lr_front_light_switch_level
                 name: Sitting Area
               - type: light
-                entity: light.bedroomlamp
+                entity: light.lr_back_light_switch_level
                 name: Office Area
               - type: light
-                entity: light.bedroomlamp
+                entity: light.hallway_lights
                 name: Hallway
+          - type: 'custom:custom-fan-card'
+            entity: fan.lr_fan_switch_level
+            name: Living Room Fan
           - type: thermostat
             entity: climate.living_room_hvac
           - type: 'custom:xiaomi-vacuum-card'
@@ -46,9 +49,16 @@ views:
             cards:
               - type: light
                 entity: light.bedroomlamp
+                name: Side Light
+              - type: light
+                entity: light.bedroom_fan
                 name: Overhead
               - type: light
-                entity: light.side_light
+                entity: light.b_closet_light_switch_level
+                name: Closet
+              - type: light
+                entity: light.bedroom_hallway_lights
+                name: Entryway
           - type: 'custom:custom-fan-card'
             entity: fan.bedroom_fan
             name: Bedroom Fan
@@ -59,17 +69,33 @@ views:
       - type: vertical-stack
         title: Nursery
         cards:
-          - type: light
-            entity: light.bedroomlamp
-            name: Overhead
+          - type: horizontal-stack 
+            cards:
+              - type: light
+                entity: light.n_light_switch_level
+                name: Overhead
+              - type: light
+                entity: light.side_light
+                name: Printer Light
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.3d_printer
+                show_state: false
+                name: Printer Power
           - type: thermostat
             entity: climate.nursery_hvac
       - type: vertical-stack
         title: Kitchen
         cards:
-          - type: light
-            entity: light.bedroomlamp
-            name: Overhead
+          - type: horizontal-stack 
+            cards:
+              - type: light
+                entity: light.k_counter_light_switch_level
+                name: Counter
+              - type: light
+                entity: light.k_table_light_switch_level
+                name: Table
           - type: thermostat
             entity: climate.kitchen_hvac
 

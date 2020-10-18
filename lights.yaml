@@ -1,1 +1,15 @@
-#Reserved for future use
+#https://www.home-assistant.io/integrations/light.switch/
+
+####################################################
+#                                                  #
+#                      LIGHTS                      #
+#                                                  #
+####################################################
+
+  - platform: switch
+    name: Hallway Lights
+    entity_id: switch.hallway_lights
+
+  - platform: switch
+    name: Bedroom Hallway Lights
+    entity_id: switch.bedroom_hallway_lights
