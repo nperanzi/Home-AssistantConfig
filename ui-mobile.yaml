@@ -28,9 +28,20 @@ views:
               - type: light
                 entity: light.lr_back_light_switch_level
                 name: Office Area
+          - type: horizontal-stack
+            cards:
               - type: light
                 entity: light.hallway_lights
                 name: Hallway
+              - type: light
+                entity: light.guest_bath_lights
+                name: Bath
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.guest_bath_fan_switch
+                name: Bath Fan
+                icon: mdi:fan
           - type: 'custom:custom-fan-card'
             entity: fan.lr_fan_switch_level
             name: Living Room Fan
@@ -56,9 +67,20 @@ views:
               - type: light
                 entity: light.b_closet_light_switch_level
                 name: Closet
+          - type: horizontal-stack
+            cards:
               - type: light
                 entity: light.bedroom_hallway_lights
                 name: Entryway
+              - type: light
+                entity: light.master_bath_lights
+                name: Bath
+              - type: button
+                tap_action:
+                  action: toggle
+                entity: switch.master_bath_fan_switch
+                name: Bath Fan
+                icon: mdi:fan
           - type: 'custom:custom-fan-card'
             entity: fan.bedroom_fan
             name: Bedroom Fan

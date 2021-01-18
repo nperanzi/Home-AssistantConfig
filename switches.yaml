@@ -1,14 +1,25 @@
-#https://home-assistant.io/components/switch/
+#https://www.home-assistant.io/integrations/switch
 
 ####################################################
 #                                                  #
-#                    SWITCHBOT                     #
+#                     SWITCHES                     #
 #                                                  #
 ####################################################
 
-  - platform: switchbot
-    mac: !secret switchbot_mac
-    name: Apartment Buzzer
+
+####################################################
+#                                                  #
+#                    WAKE ON LAN                   #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/wake_on_lan/
+
+  - platform: wake_on_lan
+    mac: !secret desktop_mac
+    host: !secret desktop_ip
+    broadcast_address: !secret desktop_ip
+    name: Desktop PC
 
 ####################################################
 #                                                  #
