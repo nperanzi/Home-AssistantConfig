@@ -11,116 +11,972 @@ views:
   - title: Rooms
     badges: []
     cards:
-      - type: button
-        tap_action:
-          action: toggle
-        entity: lock.august_smart_lock
-        name: Front Door
-        show_state: true
       - type: vertical-stack
-        title: Living Room
         cards:
-          - type: horizontal-stack
-            cards:
-              - type: light
-                entity: light.lr_front_light_switch_level
-                name: Sitting Area
-              - type: light
-                entity: light.lr_back_light_switch_level
-                name: Office Area
-          - type: horizontal-stack
-            cards:
-              - type: light
-                entity: light.hallway_lights
-                name: Hallway
-              - type: light
-                entity: light.guest_bath_lights
-                name: Bath
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: switch.guest_bath_fan_switch
-                name: Bath Fan
-                icon: mdi:fan
-          - type: 'custom:custom-fan-card'
-            entity: fan.lr_fan_switch_level
-            name: Living Room Fan
-          - type: thermostat
-            entity: climate.living_room_hvac
-          - type: 'custom:xiaomi-vacuum-card'
-            entity: vacuum.e200p8u2391901643307
-            name: Bird Legs
-            vendor: ecovacs
-          - type: media-control
-            entity: media_player.shield_2
-      - type: vertical-stack
-        title: Bedroom
-        cards:
-          - type: horizontal-stack
-            cards:
-              - type: light
-                entity: light.bedroomlamp
-                name: Side Light
-              - type: light
-                entity: light.bedroom_fan
-                name: Overhead
-              - type: light
-                entity: light.b_closet_light_switch_level
-                name: Closet
-          - type: horizontal-stack
-            cards:
-              - type: light
-                entity: light.bedroom_hallway_lights
-                name: Entryway
-              - type: light
-                entity: light.master_bath_lights
-                name: Bath
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: switch.master_bath_fan_switch
-                name: Bath Fan
-                icon: mdi:fan
-          - type: 'custom:custom-fan-card'
-            entity: fan.bedroom_fan
-            name: Bedroom Fan
-          - type: thermostat
-            entity: climate.bedroom_hvac
-          - type: media-control
-            entity: media_player.shield
-      - type: vertical-stack
-        title: Nursery
-        cards:
-          - type: horizontal-stack 
-            cards:
-              - type: light
-                entity: light.n_light_switch_level
-                name: Overhead
-              - type: light
-                entity: light.side_light
-                name: Printer Light
-              - type: button
-                tap_action:
-                  action: toggle
-                entity: switch.3d_printer
-                show_state: false
-                name: Printer Power
-          - type: thermostat
-            entity: climate.nursery_hvac
-      - type: vertical-stack
-        title: Kitchen
-        cards:
-          - type: horizontal-stack 
-            cards:
-              - type: light
-                entity: light.k_counter_light_switch_level
-                name: Counter
-              - type: light
-                entity: light.k_table_light_switch_level
-                name: Table
-          - type: thermostat
-            entity: climate.kitchen_hvac
-
+          - type: entities
+            style: |
+              ha-card {
+                border-radius: 30px;
+                background: rgba(0,0,0,.3);
+                box-shadow: none;
+                }
+            entities:
+              - type: 'custom:paper-buttons-row'
+                buttons:
+                  - entity: lock.august_smart_lock
+                    name: false
+                    state_icons:
+                      "unlocked": "mdi:lock-open"
+                      "locked": "mdi:lock"
+                    state_styles:
+                      "unlocked":
+                        button:
+                          color: green
+                      "locked":
+                        button:
+                          color: red
+                    style:
+                      button:
+                        - background: 'rgba(255,255,255,.6)'
+                        - border-radius: 25px
+                        - padding: 15px
+                      icon:
+                        - '--mdc-icon-size': 40px
+                    tap_action:
+                      action: call-service
+                      service: lock.lock
+                      service_data:
+                        entity_id: lock.august_smart_lock
+                  - entity: hash
+                    name: false
+                    icon: 'mdi:sofa'
+                    state_styles:
+                      living:
+                        button:
+                          background: 'rgba(255,255,255,.5)'
+                          box-shadow: '0 0 15px rgba(255,255,255,.6)'
+                    style:
+                      button:
+                        - background: 'rgba(255,255,255,.6)'
+                        - border-radius: 25px
+                        - padding: 15px
+                      icon:
+                        - '--mdc-icon-size': 40px
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#living"
+                  - entity: hash
+                    name: false
+                    icon: 'mdi:bed-king'
+                    state_styles:
+                      bedroom:
+                        button:
+                          background: 'rgba(255,255,255,.5)'
+                          box-shadow: '0 0 15px rgba(255,255,255,.6)'
+                    style:
+                      button:
+                        - background: 'rgba(255,255,255,.6)'
+                        - border-radius: 25px
+                        - padding: 15px
+                      icon:
+                        - '--mdc-icon-size': 40px
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#bedroom"
+                  - entity: hash
+                    name: false
+                    icon: 'mdi:human-baby-changing-table'
+                    state_styles:
+                      nursery:
+                        button:
+                          background: 'rgba(255,255,255,.5)'
+                          box-shadow: '0 0 15px rgba(255,255,255,.6)'
+                    style:
+                      button:
+                        - background: 'rgba(255,255,255,.6)'
+                        - border-radius: 25px
+                        - padding: 15px
+                      icon:
+                        - '--mdc-icon-size': 40px
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#nursery"
+                  - entity: hash
+                    name: false
+                    icon: 'mdi:fridge'
+                    state_styles:
+                      kitchen:
+                        button:
+                          background: 'rgba(255,255,255,.5)'
+                          box-shadow: '0 0 15px rgba(255,255,255,.6)'
+                    style:
+                      button:
+                        - background: 'rgba(255,255,255,.6)'
+                        - border-radius: 25px
+                        - padding: 15px
+                      icon:
+                        - '--mdc-icon-size': 40px
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#kitchen"
+                  - entity: hash
+                    name: false
+                    icon: 'mdi:shower'
+                    state_styles:
+                      bath:
+                        button:
+                          background: 'rgba(255,255,255,.5)'
+                          box-shadow: '0 0 15px rgba(255,255,255,.6)'
+                    style:
+                      button:
+                        - background: 'rgba(255,255,255,.6)'
+                        - border-radius: 25px
+                        - padding: 15px
+                      icon:
+                        - '--mdc-icon-size': 40px
+                    tap_action:
+                      action: navigate
+                      navigation_path: "#bath"
+          - type: 'custom:state-switch'
+            entity: hash
+            default: living
+            transition: none
+            states:
+              living:
+                type: 'custom:mod-card'
+                style: |
+                  ha-card {
+                    background: rgba(0,0,0,.3);
+                    padding: 10px;
+                    border-radius: 35px;
+                    margin-top: none;
+                    }
+                card:
+                  type: grid
+                  columns: 3
+                  cards:
+                    - type: 'custom:button-card'
+                      icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: light.lr_front_light_switch_level
+                      name: Sitting
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      entity: light.lr_back_light_switch_level
+                      name: Office
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            state:
+                              - color: 'rgba(0, 0, 0, 0.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                              - animation: spin 2s linear infinite
+                              - background: >-
+                                  radial-gradient(circle, rgba(255,198,0,1) 0%,
+                                  rgba(255,255,255,1) 54%, rgba(0,0,0,1) 100%);
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      aspect_ratio: 1/1
+                      entity: light.hallway_lights
+                      icon: 'mdi:ceiling-light'
+                      name: Hallway
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            state:
+                              - color: 'rgba(0, 0, 0, 0.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      entity: fan.lr_fan_switch_level
+                      name: Ceiling Fan
+                      icon: 'hass:fan'
+                      aspect_ratio: 1/1
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px .75em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          spin: true
+                          styles:
+                            icon:
+                              - color: 'rgb(1, 182, 253)'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      entity: fan.living_room_air_purifier
+                      name: Air Purifier
+                      icon: 'hass:fan'
+                      aspect_ratio: 1/1
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px .75em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          spin: true
+                          styles:
+                            icon:
+                              - color: 'rgb(1, 182, 253)'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      icon: 'mdi:television'
+                      name: TV
+                      aspect_ratio: 1/1
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        state:
+                          - color: 'rgba(255,255,255,1)'
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        name:
+                          - color: white
+                        label:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - font-family: Roboto
+                          - background: 'rgba(255,255,255,.1'
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                      entity: remote.living_room
+                      show_state: false
+                      show_label: true
+                      label: >
+                        [[[
+                          return states['remote.living_room'].attributes.current_activity;
+                        ]]]
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            label:
+                              - animation: blink 2s ease infinite
+                              - color: 'rgb(100,100,255)'
+                            icon:
+                              - color: 'rgb(100,100,255)'
+                            name:
+                              - color: 'rgba(0,0,0,.6)'
+                              - font-weight: bold
+              bedroom:
+                type: 'custom:mod-card'
+                style: |
+                  ha-card {
+                    background: rgba(0,0,0,.3);
+                    padding: 10px;
+                    border-radius: 35px;
+                    margin-top: none;
+                    }
+                card:
+                  type: grid
+                  columns: 3
+                  cards:
+                    - type: 'custom:button-card'
+                      icon: 'mdi:lamp'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: light.bedroomlamp
+                      name: Side
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      entity: light.bedroom_fan
+                      name: Overhead
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            state:
+                              - color: 'rgba(0, 0, 0, 0.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                              - animation: spin 2s linear infinite
+                              - background: >-
+                                  radial-gradient(circle, rgba(255,198,0,1) 0%,
+                                  rgba(255,255,255,1) 54%, rgba(0,0,0,1) 100%);
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      aspect_ratio: 1/1
+                      entity: light.b_closet_light_switch_level
+                      icon: 'mdi:ceiling-light'
+                      name: Closet
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            state:
+                              - color: 'rgba(0, 0, 0, 0.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      aspect_ratio: 1/1
+                      entity: light.bedroom_hallway_lights
+                      icon: 'mdi:ceiling-light'
+                      name: Entryway
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            state:
+                              - color: 'rgba(0, 0, 0, 0.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      entity: fan.bedroom_fan
+                      name: Ceiling Fan
+                      icon: 'hass:fan'
+                      aspect_ratio: 1/1
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px .75em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          spin: true
+                          styles:
+                            icon:
+                              - color: 'rgb(1, 182, 253)'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      icon: 'mdi:television'
+                      name: TV
+                      aspect_ratio: 1/1
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        state:
+                          - color: 'rgba(255,255,255,1)'
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        name:
+                          - color: white
+                        label:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - font-family: Roboto
+                          - background: 'rgba(255,255,255,.1'
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more_info
+                      entity: remote.bedroom_hub
+                      show_state: false
+                      show_label: true
+                      label: >
+                        [[[
+                          return states['remote.bedroom_hub'].attributes.current_activity;
+                        ]]]
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            label:
+                              - animation: blink 2s ease infinite
+                              - color: 'rgb(100,100,255)'
+                            icon:
+                              - color: 'rgb(100,100,255)'
+                            name:
+                              - color: 'rgba(0,0,0,.6)'
+                              - font-weight: bold
+              nursery:
+                type: 'custom:mod-card'
+                style: |
+                  ha-card {
+                    background: rgba(0,0,0,.3);
+                    padding: 10px;
+                    border-radius: 35px;
+                    margin-top: none;
+                    }
+                card:
+                  type: grid
+                  columns: 3
+                  cards:
+                    - type: 'custom:button-card'
+                      color_type: blank-card
+                    - type: 'custom:button-card'
+                      icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: light.n_light_switch_level
+                      name: Overhead
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      hold_action:
+                        action: more-info
+              kitchen:
+                type: 'custom:mod-card'
+                style: |
+                  ha-card {
+                    background: rgba(0,0,0,.3);
+                    padding: 10px;
+                    border-radius: 35px;
+                    margin-top: none;
+                    }
+                card:
+                  type: grid
+                  columns: 2
+                  cards:
+                    - type: 'custom:button-card'
+                      icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: light.k_counter_light_switch_level
+                      name: Counter
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: light.k_table_light_switch_level
+                      name: Table
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      hold_action:
+                        action: more-info
+              bath:
+                type: 'custom:mod-card'
+                style: |
+                  ha-card {
+                    background: rgba(0,0,0,.3);
+                    padding: 10px;
+                    border-radius: 35px;
+                    margin-top: none;
+                    }
+                card:
+                  type: grid
+                  columns: 2
+                  cards:
+                    - type: 'custom:button-card'
+                      icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: light.guest_bath_lights
+                      name: Guest
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      entity: switch.guest_bath_fan_switch
+                      name: Guest Fan
+                      icon: 'hass:fan'
+                      aspect_ratio: 1/1
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px .75em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          spin: true
+                          styles:
+                            icon:
+                              - color: 'rgb(1, 182, 253)'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                      tap_action:
+                        action: toggle
+                    - type: 'custom:button-card'
+                      icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: light.master_bath_lights
+                      name: Master
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      entity: switch.master_bath_fan_switch
+                      name: Master Fan
+                      icon: 'hass:fan'
+                      aspect_ratio: 1/1
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px .75em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          spin: true
+                          styles:
+                            icon:
+                              - color: 'rgb(1, 182, 253)'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                      tap_action:
+                        action: toggle
+          - type: 'custom:state-switch'
+            entity: hash
+            default: living
+            transition: none
+            states:
+              living:
+                type: thermostat
+                entity: climate.living_room_hvac
+              bedroom:
+                type: thermostat
+                entity: climate.bedroom_hvac
+              nursery:
+                type: thermostat
+                entity: climate.nursery_hvac
+              kitchen:
+                type: thermostat
+                entity: climate.kitchen_hvac
+              bath:
+                type: 'custom:button-card'
+                color_type: blank-card
 
 ####################################################
 #                                                  #
