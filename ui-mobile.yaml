@@ -6,6 +6,8 @@
 #                                                  #
 ####################################################
 
+# Note: seems to require paper-buttons-row of 0.3.0; for some reason, 0.5.0 is breaking the cards. Need to look into this later.
+
 title: Mobile
 views:
   - title: Rooms
@@ -39,7 +41,7 @@ views:
                       button:
                         - background: 'rgba(255,255,255,.6)'
                         - border-radius: 25px
-                        - padding: 10px
+                        #- padding: 10px
                       icon:
                         - '--mdc-icon-size': 40px
                     tap_action:
@@ -64,7 +66,7 @@ views:
                       button:
                         - background: 'rgba(255,255,255,.6)'
                         - border-radius: 25px
-                        - padding: 10px
+                        #- padding: 10px
                       icon:
                         - '--mdc-icon-size': 40px
                     tap_action:
@@ -82,7 +84,7 @@ views:
                       button:
                         - background: 'rgba(255,255,255,.6)'
                         - border-radius: 25px
-                        - padding: 10px
+                        #- padding: 10px
                       icon:
                         - '--mdc-icon-size': 40px
                     tap_action:
@@ -100,7 +102,7 @@ views:
                       button:
                         - background: 'rgba(255,255,255,.6)'
                         - border-radius: 25px
-                        - padding: 10px
+                        #- padding: 10px
                       icon:
                         - '--mdc-icon-size': 40px
                     tap_action:
@@ -118,7 +120,7 @@ views:
                       button:
                         - background: 'rgba(255,255,255,.6)'
                         - border-radius: 25px
-                        - padding: 10px
+                        #- padding: 10px
                       icon:
                         - '--mdc-icon-size': 40px
                     tap_action:
@@ -136,7 +138,7 @@ views:
                       button:
                         - background: 'rgba(255,255,255,.6)'
                         - border-radius: 25px
-                        - padding: 10px
+                        #- padding: 10px
                       icon:
                         - '--mdc-icon-size': 40px
                     tap_action:
@@ -1096,6 +1098,28 @@ views:
               kitchen:
                 type: thermostat
                 entity: climate.kitchen_hvac
+              bath:
+                type: 'custom:button-card'
+                color_type: blank-card
+          - type: 'custom:state-switch'
+            entity: hash
+            default: living
+            transition: none
+            states:
+              living:
+                type: 'custom:xiaomi-vacuum-card'
+                entity: vacuum.s4_max
+                name: S4 Max
+                vendor: xiaomi
+              bedroom:
+                type: 'custom:button-card'
+                color_type: blank-card
+              nursery:
+                type: 'custom:button-card'
+                color_type: blank-card
+              kitchen:
+                type: 'custom:button-card'
+                color_type: blank-card
               bath:
                 type: 'custom:button-card'
                 color_type: blank-card

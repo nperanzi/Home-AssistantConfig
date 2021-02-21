@@ -48,9 +48,9 @@ views:
           - type: thermostat
             entity: climate.living_room_hvac
           - type: 'custom:xiaomi-vacuum-card'
-            entity: vacuum.e200p8u2391901643307
-            name: Bird Legs
-            vendor: ecovacs
+            entity: vacuum.s4_max
+            name: S4 Max
+            vendor: xiaomi
           - type: media-control
             entity: media_player.shield_2
       - type: vertical-stack

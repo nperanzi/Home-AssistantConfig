@@ -1,8 +1,8 @@
 ###############################################################################
 #   @author         :   Nick Peranzi
-#   @date           :   2019-10-03
-#   @package        :   Ecovacs Robot Vacuum
-#   @description    :   Ecovacs Robot Vacuum Control and Schedule
+#   @date           :   2021-02-20
+#   @package        :   Roborock S4 Max Robot Vacuum
+#   @description    :   Roborock Robot Vacuum Control and Schedule
 ###############################################################################
 homeassistant:
   customize:
@@ -14,14 +14,8 @@ homeassistant:
 group:
   Robot Vacuum:
     entities:
-      - vacuum.e200p8u2391901643307
+      - vacuum.s4_max
       - input_boolean.disable_daily_vacuum
-
-ecovacs:
-  username: !secret ecovacs_user
-  password: !secret ecovacs_pass
-  country: us
-  continent: na
 
 input_boolean:
   daily_vacuum_first_run:
@@ -42,9 +36,15 @@ sensor:
     sensors:
       ecovacs_vacuum_cleaner_status:
         entity_id:
-          - vacuum.e200p8u2391901643307
+          - vacuum.s4_max
         friendly_name: "Ecovacs Vacuum Cleaner Status"
-        value_template: "{{ states.vacuum.vacuum.e200p8u2391901643307 }}"
+        value_template: "{{ states.vacuum.vacuum.s4_max }}"
+
+vacuum:
+  - platform: xiaomi_miio
+    host: !secret xiaomi_host
+    token: !secret xiaomi_token
+    name: S4 Max
 
 ###############################################################################
 #                               Automations
@@ -78,7 +78,7 @@ automation:
     action:
     - delay: '00:00:30'
     - service: vacuum.turn_on
-      entity_id: vacuum.e200p8u2391901643307
+      entity_id: vacuum.s4_max
     - service: homeassistant.turn_on
       entity_id: input_boolean.daily_vacuum_first_run
 
