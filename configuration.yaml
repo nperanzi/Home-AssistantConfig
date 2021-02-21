@@ -292,6 +292,14 @@ spotify:
 #https://www.home-assistant.io/components/tplink/
 
 tplink:
+  discovery: false
+  switch:
+    - host: 10.177.50.15
+    - host: 10.177.50.16
+    - host: 10.177.50.21
+    - host: 10.177.50.22
+    - host: 10.177.50.23
+    - host: 10.177.50.24
 
 ####################################################
 #                                                  #

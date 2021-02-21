@@ -405,6 +405,123 @@ views:
                             name:
                               - color: 'rgba(0,0,0,.6)'
                               - font-weight: bold
+                    - type: 'custom:button-card'
+                      aspect_ratio: 1/1
+                      entity: switch.index_stations
+                      icon: 'mdi:virtual-reality'
+                      name: Index Stations
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            state:
+                              - color: 'rgba(0, 0, 0, 0.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      aspect_ratio: 1/1
+                      entity: switch.hs103_3
+                      icon: 'mdi:television-ambient-light'
+                      name: Desk Lights
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            state:
+                              - color: 'rgba(0, 0, 0, 0.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      aspect_ratio: 1/1
+                      entity: switch.hs103_4
+                      icon: 'mdi:television-ambient-light'
+                      name: PC Lights
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            state:
+                              - color: 'rgba(0, 0, 0, 0.6)'
+                            icon:
+                              - color: var(--button-card-light-color)
+                      tap_action:
+                        action: toggle
+                      hold_action:
+                        action: more-info
               bedroom:
                 type: 'custom:mod-card'
                 style: |
