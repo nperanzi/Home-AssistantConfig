@@ -9,7 +9,7 @@
       platform: state
       entity_id: sensor.latest_version
     action:
-      service: notify.join
+      service: notify.mobile_app_nicks_iphone
       data:
         message: 'Update for Home Assistant is available. Current version: {{ states.sensor.installed_version.state }}; latest version: {{ states.sensor.latest_version.state }}'
         title: 'Home Assistant Update Available ({{ states.sensor.latest_version.state }})'

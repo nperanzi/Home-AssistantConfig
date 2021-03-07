@@ -31,15 +31,6 @@ input_boolean:
     name: Vacuum Notification Sent
     initial: off
 
-sensor:
-  - platform: template
-    sensors:
-      ecovacs_vacuum_cleaner_status:
-        entity_id:
-          - vacuum.s4_max
-        friendly_name: "S4 Max Vacuum Cleaner Status"
-        value_template: "{{ states.vacuum.vacuum.s4_max }}"
-
 vacuum:
   - platform: xiaomi_miio
     host: !secret xiaomi_host
