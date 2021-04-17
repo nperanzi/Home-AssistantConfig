@@ -137,19 +137,6 @@ switch: !include switches.yaml
 
 ####################################################
 #                                                  #
-#                   AIRVISUAL                      #
-#                                                  #
-####################################################
-
-#https://www.home-assistant.io/components/sensor.airvisual/
-airvisual:
-  api_key: !secret airvisual_api
-  geographies:
-    latitude: !secret latitude
-    longitude: !secret longitude
-
-####################################################
-#                                                  #
 #                   FASTDOTCOM                     #
 #                                                  #
 ####################################################
@@ -205,6 +192,8 @@ lovelace:
     - url: /hacsfiles/lovelace-card-mod/card-mod.js
       type: module
     - url: /hacsfiles/lovelace-xiaomi-vacuum-card/xiaomi-vacuum-card.js
+      type: module
+    - url: /hacsfiles/simple-thermostat/simple-thermostat.js
       type: module
   dashboards:
     lovelace-desktop: 

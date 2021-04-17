@@ -1087,17 +1087,49 @@ views:
             transition: none
             states:
               living:
-                type: thermostat
+                type: 'custom:simple-thermostat'
+                header: false
+                decimals: 0
+                step_size: 1
                 entity: climate.living_room_hvac
+                control:
+                  hvac:
+                    heat_cool: false
+                    fan_only: false
+                    dry: false 
               bedroom:
-                type: thermostat
+                type: 'custom:simple-thermostat'
+                header: false
+                decimals: 0
+                step_size: 1
                 entity: climate.bedroom_hvac
+                control:
+                  hvac:
+                    heat_cool: false
+                    fan_only: false
+                    dry: false 
               nursery:
-                type: thermostat
+                type: 'custom:simple-thermostat'
+                header: false
+                decimals: 0
+                step_size: 1
                 entity: climate.nursery_hvac
+                control:
+                  hvac:
+                    heat_cool: false
+                    fan_only: false
+                    dry: false 
               kitchen:
-                type: thermostat
+                type: 'custom:simple-thermostat'
+                header: false
+                decimals: 0
+                step_size: 1
                 entity: climate.kitchen_hvac
+                control:
+                  hvac:
+                    heat_cool: false
+                    fan_only: false
+                    dry: false 
               bath:
                 type: 'custom:button-card'
                 color_type: blank-card
