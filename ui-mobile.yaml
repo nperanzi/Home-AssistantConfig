@@ -11,6 +11,7 @@
 title: Mobile
 views:
   - title: Rooms
+    icon: mdi:cellphone
     badges: []
     cards:
       - type: vertical-stack
@@ -25,18 +26,14 @@ views:
             entities:
               - type: 'custom:paper-buttons-row'
                 buttons:
-                  - entity: lock.august_smart_lock
+                  - entity: hash
                     name: false
-                    state_icons:
-                      "unlocked": "mdi:lock-open"
-                      "locked": "mdi:lock"
+                    icon: 'mdi:home'
                     state_styles:
-                      "unlocked":
+                      home:
                         button:
-                          color: green
-                      "locked":
-                        button:
-                          color: red
+                          background: 'rgba(255,255,255,.5)'
+                          box-shadow: '0 0 15px rgba(255,255,255,.6)'
                     style:
                       button:
                         - background: 'rgba(255,255,255,.6)'
@@ -45,15 +42,8 @@ views:
                       icon:
                         - '--mdc-icon-size': 40px
                     tap_action:
-                      action: call-service
-                      service: lock.lock
-                      service_data:
-                        entity_id: lock.august_smart_lock
-                    hold_action:
-                      action: call-service
-                      service: lock.unlock
-                      service_data:
-                        entity_id: lock.august_smart_lock
+                      action: navigate
+                      navigation_path: "#home"
                   - entity: hash
                     name: false
                     icon: 'mdi:sofa'
@@ -146,9 +136,122 @@ views:
                       navigation_path: "#bath"
           - type: 'custom:state-switch'
             entity: hash
-            default: living
+            default: home
             transition: none
             states:
+              home:
+                type: 'custom:mod-card'
+                style: |
+                  ha-card {
+                    background: rgba(0,0,0,.3);
+                    padding: 10px;
+                    border-radius: 35px;
+                    margin-top: none;
+                    }
+                card:
+                  type: grid
+                  columns: 3
+                  cards:
+                    - type: 'custom:button-card'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: lock.august_smart_lock
+                      name: Front Door
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'unlocked'
+                          styles:
+                            icon:
+                              - color: cyan
+                        - value: 'locked'
+                          styles:
+                            icon:
+                              - color: white
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      #icon: 'mdi:ceiling-light'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: input_boolean.vacation
+                      name: Vacation
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            icon:
+                              - color: green
+                        - value: 'off'
+                          styles:
+                            icon:
+                              - color: red
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      entity: input_boolean.guest
+                      name: Guest Mode
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px 1em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            icon:
+                              - color: green
+                        - value: 'off'
+                          styles:
+                            icon:
+                              - color: red
+                      hold_action:
+                        action: more-info
               living:
                 type: 'custom:mod-card'
                 style: |
@@ -1083,9 +1186,20 @@ views:
                         action: toggle
           - type: 'custom:state-switch'
             entity: hash
-            default: living
+            default: home
             transition: none
             states:
+              home:
+                type: 'custom:simple-thermostat'
+                header: false
+                decimals: 0
+                step_size: 1
+                entity: climate.condo_hvac
+                control:
+                  hvac:
+                    heat_cool: false
+                    fan_only: false
+                    dry: false 
               living:
                 type: 'custom:simple-thermostat'
                 header: false
@@ -1135,9 +1249,12 @@ views:
                 color_type: blank-card
           - type: 'custom:state-switch'
             entity: hash
-            default: living
+            default: home
             transition: none
             states:
+              home:
+                type: 'custom:button-card'
+                color_type: blank-card
               living:
                 type: 'custom:xiaomi-vacuum-card'
                 entity: vacuum.s4_max
@@ -1155,6 +1272,25 @@ views:
               bath:
                 type: 'custom:button-card'
                 color_type: blank-card
+  - title: Advanced
+    icon: mdi:format-list-bulleted
+    badges: []
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: entities
+            style: |
+              ha-card {
+                border-radius: 30px;
+                background: rgba(0,0,0,.3);
+                box-shadow: none;
+                }
+            entities:
+              - entity: switch.restplus
+              - entity: light.restplus
+              - entity: fan.restplus
+            show_header_toggle: false
+            state_color: false
 
 ####################################################
 #                                                  #
