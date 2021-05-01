@@ -21,6 +21,8 @@ homeassistant:
   # Customization files
   customize: !include_dir_merge_named customize/
   packages: !include_dir_named packages
+  # Home Assistant Cloud
+  cloud: 
 
 ####################################################
 #                                                  #
