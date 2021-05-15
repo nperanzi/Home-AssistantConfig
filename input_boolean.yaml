@@ -2,6 +2,50 @@
 
 ####################################################
 #                                                  #
+#                 AUTO FAN CONTROL                 #
+#                                                  #
+####################################################
+
+  guest_auto_fan:
+    name: Guest Auto Fan
+    initial: on
+
+  master_auto_fan:
+    name: Master Auto Fan
+    initial: on
+
+####################################################
+#                                                  #
+#                AUTO LIGHT CONTROL                #
+#                                                  #
+####################################################
+
+  bedroom_auto_light:
+    name: Bedroom auto light
+    initial: on 
+
+  guest_auto_light:
+    name: GBath auto light
+    initial: on 
+
+  kitchen_auto_light:
+    name: Kitchen auto light
+    initial: on 
+
+  living_auto_light:
+    name: Living auto light
+    initial: on 
+
+  master_auto_light:
+    name: MBath auto light
+    initial: on 
+
+  nursery_auto_light:
+    name: Nursery auto light
+    initial: on 
+
+####################################################
+#                                                  #
 #                   GUEST MODE                     #
 #                                                  #
 ####################################################

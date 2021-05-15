@@ -1038,13 +1038,13 @@ views:
                   type: grid
                   columns: 2
                   cards:
-                    - type: 'custom:button-card'
+                    - type: 'custom:button-card' #G Light
                       icon: 'mdi:ceiling-light'
                       aspect_ratio: 1/1
                       tap_action:
                         action: toggle
                       entity: light.guest_bath_lights
-                      name: Guest
+                      name: G Light
                       style: |
                         ha-card:hover {
                           transform: scale(1.05);
@@ -1075,49 +1075,13 @@ views:
                               - color: var(--button-card-light-color)
                       hold_action:
                         action: more-info
-                    - type: 'custom:button-card'
-                      entity: switch.guest_bath_fan_switch
-                      name: Guest Fan
-                      icon: 'hass:fan'
-                      aspect_ratio: 1/1
-                      style: |
-                        ha-card:hover {
-                          transform: scale(1.05);
-                          box-shadow: 0 0 10px;
-                          }
-                      styles:
-                        name:
-                          - padding: 8px .75em
-                          - font-family: Roboto
-                          - font-size: 20px
-                          - color: white
-                        icon:
-                          - color: white
-                        card:
-                          - border-radius: 30px
-                          - background: 'rgba(255,255,255,.1)'
-                      state:
-                        - value: 'on'
-                          spin: true
-                          styles:
-                            icon:
-                              - color: 'rgb(1, 182, 253)'
-                            name:
-                              - font-weight: bold
-                              - color: 'rgba(0,0,0,.6)'
-                            card:
-                              - background: 'rgba(255,255,255,.8)'
-                              - border: 1px solid white
-                              - box-shadow: '0 0 10px, inset 0 0 5px'
-                      tap_action:
-                        action: toggle
-                    - type: 'custom:button-card'
+                    - type: 'custom:button-card' #M Light
                       icon: 'mdi:ceiling-light'
                       aspect_ratio: 1/1
                       tap_action:
                         action: toggle
                       entity: light.master_bath_lights
-                      name: Master
+                      name: M Light
                       style: |
                         ha-card:hover {
                           transform: scale(1.05);
@@ -1148,9 +1112,9 @@ views:
                               - color: var(--button-card-light-color)
                       hold_action:
                         action: more-info
-                    - type: 'custom:button-card'
-                      entity: switch.master_bath_fan_switch
-                      name: Master Fan
+                    - type: 'custom:button-card' #G Fan
+                      entity: switch.guest_bath_fan_switch
+                      name: G Fan
                       icon: 'hass:fan'
                       aspect_ratio: 1/1
                       style: |
@@ -1184,6 +1148,110 @@ views:
                               - box-shadow: '0 0 10px, inset 0 0 5px'
                       tap_action:
                         action: toggle
+                    - type: 'custom:button-card' #M Fan
+                      entity: switch.master_bath_fan_switch
+                      name: M Fan
+                      icon: 'hass:fan'
+                      aspect_ratio: 1/1
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px .75em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          spin: true
+                          styles:
+                            icon:
+                              - color: 'rgb(1, 182, 253)'
+                            name:
+                              - font-weight: bold
+                              - color: 'rgba(0,0,0,.6)'
+                            card:
+                              - background: 'rgba(255,255,255,.8)'
+                              - border: 1px solid white
+                              - box-shadow: '0 0 10px, inset 0 0 5px'
+                      tap_action:
+                        action: toggle
+                    - type: 'custom:button-card' #G Auto Fan
+                      entity: input_boolean.guest_auto_fan
+                      name: G Auto
+                      icon: 'hass:fan'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px .75em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            icon:
+                              - color: green
+                        - value: 'off'
+                          styles:
+                            icon:
+                              - color: red
+                      hold_action:
+                        action: more-info
+                    - type: 'custom:button-card' #M Auto Fan
+                      entity: input_boolean.master_auto_fan
+                      name: M Auto
+                      icon: 'hass:fan'
+                      aspect_ratio: 1/1
+                      tap_action:
+                        action: toggle
+                      style: |
+                        ha-card:hover {
+                          transform: scale(1.05);
+                          box-shadow: 0 0 10px;
+                          }
+                      styles:
+                        name:
+                          - padding: 8px .75em
+                          - font-family: Roboto
+                          - font-size: 20px
+                          - color: white
+                        icon:
+                          - color: white
+                        card:
+                          - border-radius: 30px
+                          - background: 'rgba(255,255,255,.1)'
+                      state:
+                        - value: 'on'
+                          styles:
+                            icon:
+                              - color: green
+                        - value: 'off'
+                          styles:
+                            icon:
+                              - color: red
+                      hold_action:
+                        action: more-info
           - type: 'custom:state-switch'
             entity: hash
             default: home
