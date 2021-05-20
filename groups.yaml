@@ -15,11 +15,11 @@
     - group.rachel
 
   Nick:
-    - device_tracker.N_Pixel_Wifi
+    - device_tracker.nicholass_iphone
     - device_tracker.google_maps_113430784167279752458
 
   Rachel:
-    - device_tracker.R_Pixel_Wifi
+    - device_tracker.pixel_3a_2
     - device_tracker.google_maps_105617393859143397423
 
 ####################################################
